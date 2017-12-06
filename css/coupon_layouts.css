@@ -1,0 +1,1213 @@
+/*Foundation styles carried over from globalstyle.css for Smart Deals*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: 14px;
+	font-size: 1.4rem;
+	line-height: 1;
+	color: #222;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+h4, .h4 {
+    font-size: 22px;
+}
+ul, ol {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 17px;
+    list-style-position: inside;
+}
+h1, h2, h3, h4, h5, h6, label {
+	line-height: 1.1;
+	margin-bottom: 14px;
+	margin-top: 14px;
+	text-rendering: optimizeLegibility;
+}
+h3, .h3 {
+    font-size: 28px;
+}
+.row {
+    width: 1000px;
+    max-width: 100%;
+    min-width: 767px;
+    margin: 0 auto;
+	}
+.row .row {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0 -15px;
+	}
+.row:before, .row:after {
+    content: "";
+    display: table;
+}
+.row:after {
+    clear: both;
+}
+[class*="column"]+[class*="column"].end {
+    float: left !important;
+}
+.column, .columns {
+    float: left;
+    min-height: 1px;
+    padding: 0 15px;
+    position: relative;
+}
+.row .two {
+    width: 16.667%}
+.row .three {
+    width: 25%}
+.row .five {
+    width: 41.667%}
+ .row .six {
+    width: 50%}
+.row .seven {
+    width: 58.333%}
+.row .eight {
+    width: 66.667%}
+.row .nine{
+    width: 75%}
+.row .twelve {
+    width: 100%}
+[class*="column"]+[class*="column"]:last-child {
+    float: right;
+}
+form {
+	margin: 0;
+}
+fieldset {
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 12px 12px 0;
+    margin: 18px 0;
+}
+.smartdeals fieldset {
+	border:none;
+	}
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 40;
+    display: none;
+    top: 0;
+    left: 0;
+}
+.reveal-modal {
+    background: #fff;
+    visibility: hidden;
+    display: none;
+    top: 100px;
+    left: 30%;
+    margin-left: -260px;
+    position: absolute;
+    z-index: 41;
+    padding: 30px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.reveal-modal div:first-child {
+    margin-top: 0;
+}
+.reveal-modal div:last-child {
+    margin-bottom: 0;
+}
+.reveal-modal .close-reveal-modal {
+    font-size: 22px;
+    font-size: 2.2rem;
+    line-height: .5;
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    color: #aaa;
+    text-shadow: 0 -1px 1px rbga(0,  0,  0,  0.6);
+    font-weight: bold;
+    cursor: pointer;
+}
+.reveal-modal.small {
+    width: 30%;
+    margin-left: -10%;
+}
+.reveal-modal.medium {
+    width: 40%;
+    margin-left: -20%;
+}
+.reveal-modal.large {
+    width: 60%;
+    margin-left: -30%;
+}
+.reveal-modal.expand {
+    width: 90%;
+    margin-left: -45%;
+}
+.reveal-modal .row {
+    min-width: 0;
+}
+@media only screen and (max-width: 767px) {
+    .reveal-modal-bg {
+    position: absolute;
+}
+}
+.reveal-modal, .reveal-modal.small, .reveal-modal.medium, .reveal-modal.large, .reveal-modal.xlarge {
+    width: 80%;
+    top: 15px;
+    left: 50%;
+    margin-left: -40%;
+    padding: 20px;
+    height: auto;
+}
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #ccc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    padding: 6px;
+    height: 32px;
+    width: 100%;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+}
+input.txt-choose-friend-share{
+	margin:0;
+}
+input[type="text"].oversize, input[type="password"].oversize, textarea.oversize {
+    font-size: 18px !important;
+    font-size: 1.8rem !important;
+}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    background: #fafafa;
+    outline: none !important;
+    border-color: #b3b3b3;
+}
+input[type="text"][disabled], input[type="password"][disabled],textarea[disabled] {
+    background-color: #ddd;
+}
+.label {
+    padding: 1px 4px 2px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline;
+    position: relative;
+    bottom: 1px;
+    color: #fff;
+    background: #37648B;
+}
+
+/*-- Main Coupon Layout Styles --*/
+ .fb-like{
+ 	margin:5px;
+ 	position:absolute;
+ 	display:block;
+ 	bottom:0;
+ 	right:0;
+	}
+div.alert-box-ie {
+    display: block;
+    padding: 12px 15px 20px;
+    font-size: 14px;
+    color: #333;
+	background-color: #FFEBC7;
+    border: 1px solid #cdab6d;
+    margin-bottom: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    position: relative;
+	}
+div.alert-box-ie div.ie-text {
+	display:inline-block;
+	float: left;
+	width: 400px;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	}
+div.alert-box-ie div.ie-text b {
+	font-size: 16px;
+	display: block;
+	margin-bottom: 8px;
+	}
+div.alert-box-ie div.ie-link {
+	display:inline-block;
+	float: right;
+	width: 300px;
+	margin: 0;
+	padding: 0;
+	}
+div.alert-box-ie div.ie-link a {
+	color: #333333;
+	}
+div.alert-box-ie div.ie-link a img {
+	border: none;
+	outline: none;
+	}
+div.alert-box-ie div.ie-link a p {
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	text-align: center;
+	font-size: 12px;
+	}
+body {
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	}
+body.smartdeals {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background-color:#fff;
+	padding-bottom: 65px;
+	}
+body.webdeals {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background-color:#fff;
+	/*padding-bottom: 65px;*/
+	}
+
+body.smartdeals.smartdeals-index {
+	background-color:#fff;
+	padding-bottom: 65px;
+	}
+button {
+	cursor: pointer;
+	}
+a img {
+	border: none;
+	outline: none;
+	}
+div.coupon_page_background {
+	background-color: #FFF;
+	width: 100%;
+	padding: 0px 0px 5px;
+	margin: 0;
+	}
+div.coupon_page_background .two{
+	padding-left:0 !important;
+	}
+div.coupon_page_background .dealimg{
+	background-color:gray;
+	width:100%;
+	height:70px;
+	}
+.signup{
+	width:65%;
+	background-color:#ddd;
+	border-radius:3px;
+	height:170px;
+	padding:15px;
+	margin:0px auto;
+	}
+.signup span{
+	width:45%;
+	float:left;
+	margin-top:5px;
+	}
+.signup input{
+	float:right;
+	}
+.signup .coupon_controls{
+	position:static !important;
+	bottom:auto !important;
+	width:50% !important;
+	float:right !important;
+	padding-right:0;
+	background-color:rgba(255, 255, 255, 0);
+	}
+.signup .coupon_controls button{
+	clear:right;
+	float:right;
+	}
+/*print saved deals notification*/
+.printsaveddeal{
+	background-color:rgba(180,180, 180, 0.85);
+	border-radius:5px;
+	color:#fff;
+	font-weight:bold;
+	width:27%;
+	padding:7px 10px;
+	margin:15px 0px 0px 15px;
+	position:absolute;
+	}
+.printsaveddeal p{
+	font-size:12px !important;
+	margin-bottom:0;
+	}
+.printsaveddeal a, .printsaveddeal a:hover {
+	cursor:pointer;
+	font-weight:bold;
+	color:#fff;
+	}
+/* Like button and header styles */
+div.custom_art_header {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	color: #fff;
+	box-sizing:border-box;
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-color:#eee;
+	border:none;
+	border-width: 2px 2px 0 2px;
+	}
+.fb_iframe_like{
+	display:inline-block;
+	background-color:#fff;
+	width:45%;
+	height: 33px;
+	float:right;
+	padding:6px 10px;
+	margin:0px auto;
+	border-bottom-left-radius:3px;
+	opacity:0.8;
+	overflow:hidden;
+	}
+.fb_iframe_likebutton{
+	float:right;
+	display:inline-block;
+	margin-top:-3px;
+	overflow:hidden;
+	position:absolute;
+	}
+.fb_iframe_like span{
+	display:inline;
+	color:#2C509C;
+	float:left;
+	font: bold 11px Lucida Grande, sans-serif;
+	margin-top:4px;
+	}
+#deals_vertical.blurry, #deals_grid.blurry{
+	-webkit-filter: blur(1.5px);
+    -moz-filter: blur(1.5px);
+    -ms-filter: blur(1.5px);
+    -o-filter: blur(1.5px);
+    filter: blur(1.5px);
+	}
+/*-------- DEALS VERTICAL LAYOUT STYLES --------*/
+ul.coupon_page {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border:none;
+	border-width: 0 0px 2px 2px;
+	box-sizing:border-box;
+	box-shadow: 0px -4px 9px -4px #777;
+	}
+#deals_vertical ul.coupon_page li.module {
+	margin: 0px;
+	padding: 0;
+	display: block;
+	position: relative;
+	height: 175px;
+	border:none;
+	border-width: 2px 2px 0 0;
+	background-color: #F5F5F5;
+	list-style: none;
+	overflow: hidden;
+	}
+#deals_vertical ul.coupon_page li.featured {
+	min-height: 350px;
+	height: 350px;
+	border-top: none;
+	border-bottom: none;
+	background-color: #fff;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+/*-- The two main containers of a coupon --*/
+#deals_vertical .coupon_image {
+	display: inline-block;
+	float: left;
+	height: 175px;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size:100%;
+	}
+div.coupon_info{
+	display: inline-block;
+	height:175px;
+	}
+div.coupon_info .row{
+	height:45px;
+	}
+div.coupon_data {
+	display: inline-block;
+	float: right;
+	width: 100%;
+	min-height: 100px;
+	margin: 0;
+	padding: 10px 2px 30px 0px;
+	}
+/*-- containers for the coupons deal info --*/
+#deals_vertical .coupon_data_info {
+	height: auto;
+	width: 100%;
+	display: block;
+	overflow-y: auto;
+	padding:0px 15px;
+	}
+.coupon_data_info h2 {
+	font-size: 140%;
+	font-weight:normal;
+	color: #1b89ca;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 5px;
+	padding-right: 2%;
+	}
+.coupon_data_info p {
+	font-size: 80%;
+	color: #333333;
+	margin: 0;
+	padding: 0;
+	padding-right: 2%;
+	}
+/*-- containers of the coupons fine print --*/
+.coupon_data_details {
+	height: auto;
+	width: 100%;
+	overflow-y: auto;
+	}
+#deals_vertical .coupon_data_details p {
+	font-size: .8em;
+	color: #555555;
+	margin-bottom: 5px;
+	padding-right: 2%;
+	}
+.coupon_data_details span.expires {
+	font-weight: bold;
+	}
+.coupon_data_info span.expires {
+	font-weight: bold;
+	font-size:10px;
+	color:#27385C;
+	}
+/*-------- open notification styles ---*/
+.open-notify {
+	padding: 15px;
+	border-bottom: 1px #fff solid;
+	border-top: 1px #aaa solid;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	text-shadow: #1A356E 0 1px;
+	background: rgb(87,117,178); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(87,117,178,1) 0%, rgba(103,128,178,1) 5%, rgba(109,132,180,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87,117,178,1)), color-stop(5%,rgba(103,128,178,1)), color-stop(100%,rgba(109,132,180,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(87,117,178,1) 0%,rgba(103,128,178,1) 5%,rgba(109,132,180,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(87,117,178,1) 0%,rgba(103,128,178,1) 5%,rgba(109,132,180,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(87,117,178,1) 0%,rgba(103,128,178,1) 5%,rgba(109,132,180,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(87,117,178,1) 0%,rgba(103,128,178,1) 5%,rgba(109,132,180,1) 100%); /* W3C */
+	}
+.notify, .turn_off_notify{
+	float:right;
+	width:175px;
+	background-color:#81B700;
+	border:1px solid #709900;
+}
+.button {
+    width: auto;
+    background: #5986E4;
+    border: 1px solid #3B5998;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica Neue",  "HelveticaNeue",  Helvetica,  Arial,  "Lucida Grande",  sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0px;
+    outline: none;
+    padding: 10px 20px 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
+	}
+.button:hover {
+    color: #fff;
+    background-color: #4A70BF;
+	}
+.button.success {
+    background-color: #81B700;
+    border: 1px solid #709900;
+	}
+.button.success:hover {
+    background-color: #709900;
+	}
+/*-------- DEALS *GRID* LAYOUT STYLES --------*/
+#deals_grid ul.coupon_page {
+	border-width: 0 2px 2px 2px;
+	}
+#deals_grid ul.coupon_page li.module {
+	margin-top: 25px;
+	width:46%;
+	float:left;
+	margin-left:3%;
+	display: block;
+	position: relative;
+	height: 190px;
+	border:2px #ddd solid;
+	border-radius:3px;
+	background-color: #fff;
+	list-style: none;
+	overflow: hidden;
+	}
+#deals_grid ul.coupon_page li.featured {
+	min-height: 250px;
+	height: 250px;
+	border-top: none;
+	border-bottom: none;
+	background-color: #fff;
+	background-position: center center;
+	background-repeat: no-repeat;
+	}
+/*-- The two main containers of a coupon --*/
+#deals_grid .coupon_image {
+	display: inline-block;
+	float: left;
+	height: 140px !important;
+	width:18%;
+	overflow:hidden;
+	background-position: left center;
+	background-repeat: no-repeat;
+	height:100%;
+	}
+#deals_grid div.coupon_info{
+	height:190px;
+	float:left;
+	width:58%;
+	}
+/*-- containers for the coupons deal info --*/
+#deals_grid .coupon_data_info {
+	height: auto;
+	width: 50%;
+	display: block;
+	overflow-y: scroll;
+	padding:0px 15px;
+	}
+/*-- containers of the coupons fine print --*/
+#deals_grid .coupon_data_details p {
+	font-size: .8em;
+	color: #555555;
+	margin-bottom: 5px;
+	padding-right: 2%;
+	}
+#deals_grid .coupon_controls{
+	margin-left:-148px;
+	background-color:#ddd;
+	padding-top:9px;
+	box-shadow: 0px -4px 7px -4px #666;
+	left:0;
+	}
+#deals-grid .coupon_controls.style2 button {
+	margin-right:0;
+	}
+/*-- button controls for printing, sharing, and seeing fine print --*/
+
+.coupon_controls{
+	height: 50px;
+	padding: 7px 7px 0px 15px;
+	position: absolute;
+	display: block;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(250,250,250);
+	border-radius: 5px 5px 0 0;
+	background-color: rgba(255,255,255,.5);
+	}
+.bday_controls{
+	height: 30px;
+	width: 95px;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 5px 5px 0 0;
+	margin:-50px 0px 0px 35px;
+	}
+.bday_controls button {
+	height: 28px;
+	border: 1px #333 solid;
+	color: #fff;
+	text-align: center;
+	background-color: #333333;
+	font-weight: bold;
+	padding: 5px 50px 5px 50px;
+	border-radius: 0;
+	text-shadow: 1px 1px 0 #333;
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,.1) 50%, rgba(255,255,255,0) 51%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%,rgba(255,255,255,.1)), color-stop(51%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* IE10+ */
+	background-image: linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* W3C */
+	}
+.coupon_controls button {
+	height: 35px;
+	border: 1px #ccc solid;
+	color: #fff;
+	float:left;
+	text-align: center;
+	background-color: #444;
+	font-weight: bold;
+	border-radius:0px;
+	font-size:18px;
+	font-weight:normal;
+	text-shadow: 1px 1px 0 #333;
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,.1) 50%, rgba(255,255,255,0) 51%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%,rgba(255,255,255,.1)), color-stop(51%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* IE10+ */
+	background-image: linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* W3C */
+	}
+.coupon_controls.style2 button, button.shareit {
+	height: 30px;
+	border: 1px #999 solid;
+	box-shadow:1px 1px 1px #ddd;
+	color: #1B89CA;
+	margin-right:2%;
+	text-align: center;
+	background-color: #444;
+	font-weight: bold;
+	border-radius:2px;
+	font-size:18px;
+	font-weight:normal;
+	text-shadow: 0px 0px 0px;
+	background-color:#fff;
+	}
+button.shareit {
+	padding:5px 20px;
+	}
+.coupon_controls.style2 button.coupon_controls_print{
+	color:#fff;
+	}
+.coupon_controls button:hover{
+	background-image: none !important;
+	}
+.coupon_controls button:active {
+	background-color: #666;
+	background-image: none;
+	}
+.coupon_controls button.coupon_controls_details {
+	width: 24.3%;
+	}
+.coupon_controls button.coupon_controls_share {
+	width: 24.3%;
+	z-index:11;
+	}
+.coupon_controls button.coupon_controls_print {
+	width: 40.3%;
+	background-color: #1B89CA;
+	}
+.coupon_controls button.coupon_controls_print:hover {
+	background-color: #0075AF;
+	}
+.coupon_page li.share .coupon_controls button.coupon_controls_print {
+	width: 66%;
+	}
+.coupon_controls.share-controls{
+	width:auto !important;
+	}
+
+/*-- If coupon is a feature coupon --*/
+#deals_vertical ul.coupon_page li.featured div.coupon_image, #deals_grid ul.coupon_page li.featured div.coupon_image, ul.coupon_page li.featured div.coupon_data {
+	visibility: hidden;
+	}
+ul.coupon_page li.featured div.coupon_data_details {
+	display: inline-block;
+	overflow-y: visible;
+	}
+.feature_image_override div.coupon_data {
+	height: 80%;
+	overflow-y: auto;
+	background-color: #FFF !important;
+	background-image: none !important;
+	background: rgba(255, 255, 255, 0.9) !important;
+	}
+.feature_image_override .coupon_data_info, .feature_image_override .coupon_data_details {
+	height: auto;
+	display: block;
+	}
+/*-- If coupon is a share required coupon --*/
+ul.coupon_page li.share {
+	}
+/* comments section styles */
+.comments_section{
+	margin: 0;
+	padding: 35px 55px;
+	width: 100%;
+	height:auto;
+	background-color:#fff;
+	margin-bottom:20px;
+	clear:both;
+	}
+.comments_section h5{
+	color:#2C509C;
+	}
+.smartdeals .fbFeedbackContent{
+	margin:30px 20px !important;
+	}
+/*-- styles for claim code page --*/
+.codeinfo{
+	clear:both;
+	background-color:#eee;
+	min-height:300px;
+	height:auto;
+	padding-top:25px;
+	padding:15px;
+	}
+.code_page .coupon_controls{
+	bottom:auto;
+	margin-top:20px;
+	background-color:transparent !important;
+	padding-left:0px;
+	}
+.codespace{
+	background-color:#ddd;
+	padding:15px 10px 15px 10px;
+	font-size:24px;
+	font-weight:bold;
+	margin:15px 0px;
+	border-radius:3px;
+	width:600px;
+	}
+/*-- Styles for Coupon Print Page.... negates below styles??--*/
+#coupon_print_page h3{
+	color:#3b5998 !important;
+	}
+#coupon_print_page h4{
+	color:#454545 !important;
+	font-weight:normal;
+	}
+#coupon_print_page .coupon_controls, #printlatermodal .coupon_controls{
+	position:static !important;
+	padding-left:0px;
+	height:auto;
+	background-color:rgba(255, 255, 255, 0);
+	}
+#coupon_print_page .coupon_controls button{
+	clear:both;
+	margin:15px 0px;
+	padding:0px 15px;
+	}
+#coupon_print_page .deal_description{
+	display:block;
+	line-height:16px;
+	}
+#coupon_print_page .header{
+	float:left;
+	width:100%;
+	padding:0px 10px 10px 10px;
+	border:2px dashed #ddd;
+	}
+#coupon_print_page .printbody{
+	padding-top:30px;
+	clear:both;
+	height:auto;
+	width:100%;
+	}
+.printnow, .printlater{
+	width:47%;
+	margin-right:20px;
+	height:160px;
+	background-color:#dfe7ef;
+	border-radius:3px;
+	float:left;
+	padding:10px 15px;
+	}
+.printnow span, .printlater span{
+	text-align:center;
+	width:90px;
+	font-size:12px;
+	line-height:13px;
+	}
+.printnow{
+	height:310px;
+	}
+.printchecklist{
+	background-color:#fff;
+	border-radius:3px;
+	width:95%;
+	padding:10px 15px;
+	margin-top:15px;
+	}
+.printchecklist img{
+	width:40px;
+	float:left;
+	}
+.printchecklist h4{
+	float:left;
+	margin-left:15px;
+	}
+.printchecklist ul{
+	width:75%;
+	clear:both;
+	list-style-image:url('//s3.amazonaws.com/siteimg.coupsmart.com/apps/printcheck.png');
+	margin-top:20px;
+	margin-left:55px;
+	}
+.printnowbutton, .printlaterbutton{
+	background-color:#2e4e8a;
+	color:#fff;
+	margin-left:35% !important;
+	width:200px;
+	border:4px solid #ccc !important;
+	height:35px !important;
+	}
+.printnowbutton{
+	margin-top:0px !important;
+	}
+#coupon_print_page h4.errormsg{
+	color:red !important;
+	}
+#dealtimeout, #accessdenied{
+	background-color:#eee;
+	padding:10px 15px;
+	height:200px;
+	border-radius:3px;
+	width:75%
+	}
+#dealtimeout span, #accessdenied span{
+	width:85%;
+	display:block;
+	}
+#coupon_print_page .render_coupon_area{
+	height:300px;
+	background-color:#ddd;
+	clear:both;
+	}
+#couponrendered h4, #couponrendered img{
+ 	float:left;
+ 	display:inline-block;
+	}
+#couponrendered img{
+	width:25px;
+	height:15px;
+	margin-top:23px;
+	}
+span.helplink{
+	display:block;
+	clear:both;
+	padding-top:10px;
+	float:left;
+	}
+#couponrendered span.helplink{
+	width:47%;
+	padding-top:20px;
+	}
+#couponrendered .coupon_controls{
+	width:50% !important;
+	float:right;
+	padding-right:0 !important;
+	}
+#couponrendered button{
+	float:right !important;
+	}
+#couponrendered button.coupon_controls_share{
+	width:150px;
+	clear:none !important;
+	}
+#couponrendered button.printbutton{
+	height:50px;
+	width:100px;
+	background-color:#3b5998 !important;
+	color:#fff !important;
+	margin-left:15px;
+	}
+#timeoutmodal h3{
+	color:red !important;
+	}
+#timeoutmodal .coupon_controls, #permissionsmodal .coupon_controls{
+	height:auto !important;
+	margin-bottom:20px !important;
+	background-color:rgba(255,255,255,0);
+	padding-left:0 !important;
+	}
+#permissionsmodal .coupon_controls{
+	width:75%;
+	right:auto !important;
+	}
+#timeoutmodal .coupon_controls button, #permissionsmodal .coupon_controls button{
+	margin-bottom:10px;
+	}
+#timeoutmodal .coupon_controls button.backtodeals{
+	background-color:#3b5998 !important;
+	color:#fff !important;
+	}
+#timeoutmodal .dealdetails{
+	line-height:17px;
+	}
+.cancel_print{
+	clear:both;
+	margin-top:60px !important;
+	}
+/*-- Styles for Printed Coupon Screen // must stay at bottom --*/
+#topbar {
+	margin: 10px 15%;
+	display: block;
+	width: 70%;
+	}
+#loading {
+	width: 100%;
+	}
+.loading_block {
+	background-color: #fff;
+	height: auto;
+	width: 94%;
+	display: inline-block;
+	margin: 0;
+	padding: 3% 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	}
+.loading_block img {
+	display:inline-block;
+	margin: 10px 47%;
+	width: 32px;
+	height: 32px;
+	}
+.loading_block h1{
+	color: #666;
+	font-size: 20px;
+	text-align: center;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+	}
+#loaded {
+	width: 100px;
+	padding: 10px;
+	height: 100px;
+	display: none;
+	}
+#loaded h1 {
+	font-size: 18px;
+	display: inline;
+	margin-left: 10px;
+	color: #133783;
+	margin: 0 10px;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+	}
+#loaded #coupon-container img {
+	display: inline;
+	width: 100%;
+	height: auto;
+	}
+.coupon-deal {
+	list-style: none;
+	}
+div#loaded button {
+	height: 30px;
+	min-width: 70px;
+	border: 1px #ccc solid;
+	padding: 2px 6px 3px;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	background-color: #1B89CA;
+	cursor: pointer;
+	border-radius: 2px;
+	text-shadow: 1px 1px 0 #0075B0;
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,.1) 50%, rgba(255,255,255,0) 51%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%,rgba(255,255,255,.1)), color-stop(51%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* IE10+ */
+	background-image: linear-gradient(top, rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 51%); /* W3C */
+	}
+#coupon {
+	position: relative;
+	z-index:2;
+	}
+#coupon-container {
+	position: relative;
+	display: block;
+	z-index: 1;
+	}
+div.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	background-image: none;
+	z-index: 10;
+	background-image: url('https://s3.amazonaws.com/uploads.coupsmart.com/securityoverlay_19.png'); width:100%;height:100%;
+	}
+/*styles for Smart Deals reveal*/
+.reveal-modal-bg {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: #fff;
+	background-color: rgba(255, 255, 255, 0.6);
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0;
+	}
+
+.reveal-modal {
+	visibility: hidden;
+	top: 100px;
+	left: 50%;
+	margin-left: -300px;
+	width: 520px;
+	background: #eee no-repeat -200px -80px;
+	position: absolute;
+	z-index: 101;
+	padding: 30px 40px 34px;
+	border: 10px rgb(130, 130, 130) solid;
+	box-shadow: 0 0 0
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	}
+
+.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
+
+.reveal-modal .close-reveal-modal {
+	font-size: 22px;
+	line-height: .5;
+	position: absolute;
+	top: 8px;
+	right: 11px;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+	}
+#detailsmodal h3, #sharesuccess h3, #permissionsmodal h3{
+	color:#0075AF;
+	}
+#detailsmodal h3{
+	margin-top:26px;
+	clear:both;
+	display:block;
+	}
+#sharesuccess{
+	min-height:150px;
+	}
+#detailsmodal .dealdetails{
+	line-height:16px;
+	}
+#detailsmodal .coupon_image {
+	display: inline-block;
+	float: left;
+	height: 175px;
+	margin-bottom:20px;
+	padding-bottom:15px;
+	width:100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:100%;
+	}
+#detailsmodal div.coupon_data_details p {
+	margin: 10px 0;
+	display: block;
+	line-height:16px;
+	}
+.smartdeals .reveal-modal{
+	padding:30px 18px;
+	min-height:300px;
+	border-radius:8px;
+	}
+.smartdeals .reveal-modal label{
+	font-weight:bold;
+	font-size:16px;
+	line-height:16px;
+	}
+.smartdeals .reveal-modal select option{
+	background:url('//s3.amazonaws.com/siteimg.coupsmart.com/apps/method_selector_sprite_bw_new.png');
+	background-size: 10px 10px;
+	background-position:left center;
+	overflow:hidden;
+	}
+#support-footer span{
+	line-height:25px;
+	}
+#the_footer{
+	margin-top:10px;
+	padding-top:10px;
+	clear:both;
+	}
+/* ///////// Blocking Vitalicious Custom Code from showing up on all other apps ///////// */
+span.vitalicious {
+	display:none;
+	}
+
+/* ///////// Blocking Stride Rite Custom Code from showing up on all other apps ///////// */
+span.striderite {
+	display:none;
+	}
+
+/* ///////// Fix to Force Print Button on Bottom ///////// */
+ul.coupon_page li > .row {
+	display: block;
+	}
+
+ul.coupon_page li > .row, ul.coupon_page li > .row .columns {
+	height: 100% !important;
+	}
+/* ///////// Privacy Button ///////// */
+.footer-privacy-policy {
+		display: inline-block;
+		background-color: #1B89CA;
+		padding: 12px 10px;
+		color: #fff;
+		border-radius: 6px;
+		cursor: pointer;
+		}
+div#footer-privacy-policy-content {
+  overflow-y:scroll !important;
+  padding: 30px 35px !important;
+  }
+
+/* ///////// Facebook Like Button Styling for Like Gate ///////// */
+#fb_like_button_container {margin:10px 0;float:right;}

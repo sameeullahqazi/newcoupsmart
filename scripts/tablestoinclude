@@ -1,0 +1,1 @@
+mysqldump -u root -h localhost dev_coupsmart --no-data app_config email_templates users companies items deals campaigns user_items items_views campaigns_locations locations fb_likes user_fb_likes > scripts/db_schema.sql

@@ -1,0 +1,13 @@
+@media print {
+	#topbar {height:90mm; width: 185mm; padding: 0; margin: 0;}
+	#loaded {height:90mm; width: 185mm; padding: 0; margin: 0;}
+	#coupon {height:90mm; width: 185mm; padding: 0; margin: 0;}
+	#coupon-container{height:100%;}
+	button#back,
+	button#print,
+	div.overlay,
+	div.lindt_footer,
+	div#support-footer,
+	span#print-disclaimer
+		{display: none !important;}
+} 

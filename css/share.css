@@ -1,0 +1,227 @@
+/* app sharing styles for the dropdown and sharemodal - for now, a few styles are also reliant on foundation.css and reveal.css to standardize*/
+
+/* ul.sharemethods dropdown*/
+ul.share_methods{
+	position:absolute;
+	border-radius:3px;
+	width:150px;
+	background-color:rgb(231,235,242);
+	color:#000;
+	display:none;
+	right:185px;
+	bottom:0;
+	margin:12px 0 17px 0;
+	height:160px !important;
+	z-index:3;
+	list-style-type:none;
+	box-shadow:1px 1px 2px 1px rgba(0,0,0,0.35);
+	font-size:14px;
+	line-height:1.6;
+	box-sizing:border-box;
+	background-color:rgba(231,235,242,0.93);
+	}
+ul.share_methods li{
+	font-size:12px;
+	padding:2px 6px;
+	height:32px;
+	margin:0;
+	}
+ul.share_methods li div{	
+	background-image:url('//s3.amazonaws.com/sgsimg.coupsmart.com/method_selector_friends_sprite.png');
+	background-repeat:no-repeat;
+	margin:2px 5px 0px 0px;
+	background-size:96px 22px;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	}
+ul.share_methods li.own_wall div{ background-position: 0 0;}
+ul.share_methods li.friend_wall div{ background-position: -19px 0;}
+ul.share_methods li.private_message div{ background-position: -38px 0;}
+ul.share_methods li.own_group div{ background-position: -57px -1px;}
+ul.share_methods li.own_page div{ background-position: -78px 0;}
+
+ul.share_methods li:hover{
+	cursor:pointer;
+	background-color:#cbd9f1;
+	}
+ul.share_methods img{
+	width:19px;
+	height:19px;
+	margin-left:4px;
+	}
+/*sharemodal*/
+.reveal-modal-bg{
+	background-color: rgba(255, 255, 255, 0.6);
+	}
+#sharemodal fieldset {
+	border:none;
+    margin:0;
+    background-color:rgba(255, 255, 255, 0);
+	}
+#sharemodal.reveal-modal{
+	padding:0 !important;
+	background-color:#fff;
+	width:555px;
+	min-height:300px;
+	border-radius:8px;
+	border:10px rgb(130, 130, 130) solid;
+	box-sizing:border-box;
+	left:50%;
+	margin-left:-300px;
+	position:absolute;
+}
+#sharemodal .sharehead{
+	top:0;
+}
+#sharemodal .sharefoot{
+	bottom:0;
+	padding-left:10px;
+	min-height:55px;
+}
+#sharemodal .sharefoot .coupon_controls{
+	background-color:inherit;
+}
+#sharemodal .sharehead, .sharefoot{
+	background-color:#f2f2f2;
+	width:100%;
+	}
+#sharemodal .sharehead h5{
+	margin:0;
+	padding:10px 0px 10px 10px;
+	}
+#sharemodal .coupon_controls{
+	position:relative;
+	padding-left:0px;
+	}
+#sharemodal .style2 .button{
+	padding-top:5px;
+	float:right;
+	}
+#sharemodal .sharepreview fieldset, .recipient_box fieldset{
+	margin-bottom:0;
+	margin-top:0;
+	}
+#sharemodal .smartdeals .recipient_box{
+	display:none;
+	}
+#sharemodal .smartdeals .recipient_box label{
+	display:block;
+	margin:10px 0;
+	}
+#sharemodal .smartdeals .recipient_box .fbusername{
+	float:none;
+	}
+#sharemodal .sharedetails textarea{
+	height:96px !important;
+	line-height:32px;
+	font-size:14px;
+	margin:10px 0;
+	border:none;
+	border-bottom:1px dashed rgba(0,0,0,.3);
+	}
+#sharemodal .sharedetails{
+	border-radius:3px;
+	background-color:#fff;
+	width:100%;
+	padding:10px;
+	}
+#sharemodal .sharebox{
+	border:1px solid #bdc7d8;
+	}
+#sharemodal .sharedetails textarea{
+	margin:0 !important;
+	}
+#sharemodal .sharepreview{
+	font-family:Lucida Grande, sans-serif;
+	}
+#sharemodal .sharepreview h5{
+	font-size:16px;
+	}
+#sharemodal .sharepreview .row{
+	color:rgb(59,89,152) !important;
+	}
+#sharemodal .sharepreview .row .three{
+	padding:0 !important;
+	height:inherit;
+	}
+#sharemodal .sharepreview .row .nine, #sharemodal .sharepreview .row .small-9{
+	border-left:1px solid rgba(0,0,0,.08);
+	min-height:120px;
+}
+#sharemodal .prev-image{
+	width:100%;
+	clear:left;
+	background-position:50% 50%;
+	float:left;
+	padding:20px 0;
+	}
+#sharemodal .sharepreview .itemname{
+	padding-top:10px;
+	text-decoration:underline;
+	}
+#sharemodal .sharepreview span{
+	float:left;
+	margin:7px 20px 7px 0px;
+	}
+#sharemodal .sharepreview span.item_name{
+	width:250px;
+	font-size:12px;	
+	}
+#sharemodal .sharepreview span.itemdesc{
+	width:100%;
+	font-size:12px;
+	line-height:14px;
+	color:#888;	
+	clear:both;
+	}
+#sharemodal .fbusername {
+	font-size: 13px; /*reduced from 18px to fix mobile scaling*/
+	margin-top: 7px;
+	float:left;
+	overflow: hidden;
+	}
+/*ul.friend-dropdown-list*/
+ul.friend-dropdown-list{
+	box-sizing:border-box;
+	position:absolute;
+	width:511px;
+	background-color:#fff;
+	z-index:200;
+	margin:-13px 0 0 !important;
+	border:1px solid #222;
+	min-height:50px;
+	margin-top:0px !important;
+	margin-left:-7px;
+	}
+ul.friend-dropdown-list li {
+	min-height: 50px;
+	height:50px;
+	padding: 5px;
+	border-bottom: 1px dotted #333;
+	list-style-type: none;
+	}
+ul.friend-dropdown-list.chosen-friend{
+	border:none;
+}
+ul.friend-dropdown-list.chosen-friend, ul.friend-dropdown-list li {
+	background-color:transparent !important;
+}
+ul.friend-dropdown-list.chosen-friend li {
+	border-bottom: none;
+	background-color:#f7f7f7;
+	}
+ul.friend-dropdown-list li:hover {
+	cursor: pointer;
+	background-color:#f7f7f7;
+	}
+ul.friend-dropdown-list li .fbuserimg-small{
+	width:40px;
+	height:40px;
+	background-size: cover;
+	border: 1px solid #333;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	/*margin-left:20px;*/ /*removed to fix mobile scaling issue */
+	}

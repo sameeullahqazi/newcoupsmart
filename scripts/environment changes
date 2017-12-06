@@ -1,0 +1,52 @@
+1.	/etc/php.ini
+----------------------
+separator = ';&' (so that ; and & both act as separators)
+
+2.	All images will need to be accessed so please give appropriate access
+chmod -R 777 images
+
+3.	Enable mod_rewrite in httpd.conf
+
+4.	The virutal folder permissions should look something like this:
+<VirtualHost *:80>
+ ServerAdmin troy@digissance.com
+ DocumentRoot "/Users/sameeullahqazi/work/coupsmart/newcoupsmart"
+ ServerName dev.coupsmart.local
+ DirectoryIndex index.php index.html index.cgi
+ <Directory "/Users/sameeullahqazi/work/coupsmart/newcoupsmart">
+  AllowOverride All 
+  #Order Allow,Deny
+  #Allow from All 
+  Require all granted
+        Options +FollowSymLinks
+ </Directory>
+</VirtualHost>
+
+5.	Virtual Hosts may be specified in a separate file as follows:
+Include /private/etc/apache2/extra/httpd-vhosts.conf
+
+
+TODOs:
+===============================
+-	S3 buckets have to be replaced with a physical folder where images will be stored and retrieved from
+----------------------------------------------------------------------------------------------------------
+1.	Create a new folder in images/uploads/s3bucket for this purpose.
+2.	Give the whole images/uploads 777 permissions
+3.	Uploading images to s3 buckets will be the same as saving images to the above folder
+4.	Downloading images from s3 buckets will be the same as fetching images from the above folder
+
+
+-	Email can no longer be sent using SES; their own email server will be used.
+-------------------------------------------------------------------------------
+
+-	Install LAMP on 
+-------------------------
+
+-	Somehow make the IP remote so that it can be accessed over the internet.
+----------------------------------------------------------------------
+
+-	Install ImageMagick
+---------------------------
+
+-	Alternately, use the GB library for image rendering.
+---------------------------------------------------------------
