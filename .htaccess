@@ -1,0 +1,20 @@
+#AuthType Basic
+#AuthName "Please login"
+#AuthUserFile /etc/.htpasswd
+#Require valid-user
+
+#Order Allow,Deny
+#Allow from 172.17.10
+#Satisfy any
+
+
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?request=$1 [QSA,NC]
+
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+#php_value error_reporting 2147483647
