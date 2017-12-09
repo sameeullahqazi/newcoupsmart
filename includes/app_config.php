@@ -747,7 +747,7 @@ if ($use_settings == 'dev' || $use_settings == 'local_production') {
 	$twitter_key = 'TstYQCNHd9pXNIOCpNM7w';
 	$twitter_secret = 'DbRRN5ZGBLte9h62cfvGId0vMQoCD300GBywHFAJs';
 	$gmaps_key = 'ABQIAAAAmp2AHJRerQhtdMJgLU8JhxSfbWVt_MkE0bgUJ7XySAaJHa7pdBRII0d7I7wOirlccpaZ7CvBTcxNBg';
-	$db_pref = 'dev_coupsmart';
+	$db_pref = 'newcoupsmart';
 	$bucket = 'pdev.coupsmart.com';
 	
 	// Facebook App - Coupsmart (Local Dev)
