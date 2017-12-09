@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 require_once(dirname(dirname(dirname(__DIR__))) . '/includes/app_config.php');
 require_once(dirname(dirname(dirname(__DIR__))) . '/classes/Database.class.php');
 require_once(dirname(dirname(dirname(__DIR__))) . '/classes/BasicDataObject.class.php');
+require_once(dirname(dirname(dirname(__DIR__))) . '/classes/Errors.class.php');
 require_once(dirname(dirname(dirname(__DIR__))) . '/classes/Company.class.php');
 require_once(dirname(dirname(dirname(__DIR__))) . '/classes/Item.class.php');
 require_once(dirname(dirname(dirname(__DIR__))) . '/classes/User.class.php');
@@ -52,6 +53,7 @@ $db = new Database();
 try{
 	$db->connect();
 } catch(Exception $e) {
+	error_log("Exception in helpers/facebook/application/print.php: " . var_export($e, true));
 	Errors::show500();
 }
 
@@ -668,8 +670,8 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 					 //url: "/cgi-bin/magickwand.cgi",
 					  dataType: 'json',
 					success: function(data) {
-						// console.log('data returned when printing coupon:');
-						// console.log(data);
+						console.log('data returned when printing coupon:');
+						console.log(data);
 						
 							  // alert('data: ' + data);
 						if(data != 0) {
@@ -688,7 +690,7 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 							}
 							else
 							{
-								$('#coupon').attr('src', data);
+								$('#coupon').attr('src', '/images/uploads/s3bucket/' + data);
 								
 								ie8_or_less = '<?php echo $ie8_or_less; ?>';
 								if (ie8_or_less == '0') {
