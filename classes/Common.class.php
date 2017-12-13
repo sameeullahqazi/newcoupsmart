@@ -1156,5 +1156,21 @@
 			
 			$image->drawImage($draw);
 		}
+		
+		public static function getUBXChannelType($delivery_method)
+		{
+			$arr_facebook = array_flip(explode(',', FACEBOOK));
+			$arr_web = array_flip(explode(',', WEB));
+			$arr_mobile = array_flip(explode(',', MOBILE));
+			
+			if(isset($arr_facebook[$delivery_method]))
+				return UBX::$channel_social;
+			
+			if(isset($arr_web[$delivery_method]))
+				return UBX::$channel_web;
+				
+			if(isset($arr_mobile[$delivery_method]))
+				return UBX::$channel_mobile;
+		}
 	}
 ?>
