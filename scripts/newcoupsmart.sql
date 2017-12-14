@@ -1370,3 +1370,68 @@ INSERT INTO `items` VALUES (2411,NULL,NULL,1147,1290,NULL,'Free coupon code','Ge
 insert into campaigns values (2411,'Get your free Code - Report',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,0,'running',NULL,NULL,NULL,1,'960761819d4c27cd6fb5973b45963b42.jpg',1,NULL,NULL,0,NULL,'31b9477b2f8c4c7eec37a5e7b285dc07.jpg',NULL,NULL,NULL,NULL,NULL,'yes_own',NULL,NULL,'2017-12-13 09:21:43',0,0,0,0,'31b9477b2f8c4c7eec37a5e7b285dc07.jpg',NULL,NULL,'5b0e118a3d7520cdd777a603ba921f63.jpg',NULL,NULL,0,NULL,NULL);
 
 INSERT INTO `deals` VALUES (1290,1147,'Free coupon code',NULL,NULL,'2017-12-13 09:21:42',NULL);
+
+
+-------------------- Deployed till this point 13th Dec 2017 --------------------
+update companies set facebook_page_id = '280685912042335' where id = 1147;
+
+drop table if exists `users_notifications`;
+CREATE TABLE `users_notifications` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `fb_id` bigint(20) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `notify` int(1) DEFAULT NULL,
+  `active` int(1) NOT NULL DEFAULT '1',
+  `app_index` int(11) DEFAULT NULL,
+  `date_notification_sent` datetime DEFAULT NULL,
+  `access_token` varchar(255) DEFAULT NULL,
+  `permissions` text,
+  `expires_on` datetime DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+drop table if exists `smart_link_clicks`;
+CREATE TABLE `smart_link_clicks` (
+  `id` bigint(30) unsigned NOT NULL AUTO_INCREMENT,
+  `smart_link_id` int(10) unsigned DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `ip` varchar(50) DEFAULT NULL,
+  `session_id` varchar(255) DEFAULT NULL,
+  `viewed` tinyint(1) DEFAULT '0',
+  `claimed` tinyint(1) DEFAULT '0',
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+drop table if exists `unsubscribed_emails`;
+CREATE TABLE `unsubscribed_emails` (
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `email_template_id` int(10) unsigned DEFAULT NULL,
+  `company_id` int(11) unsigned DEFAULT NULL,
+  `type` enum('none','user','company') DEFAULT 'none',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+insert into items values (2394,NULL,NULL,1147,1280,NULL,'TestCorporate Deal 1','TestCorporate Deal 1',NULL,NULL,NULL,'TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. ',NULL,NULL,NULL,NULL,'2016-07-05 15:00:00',NULL,NULL,3,100000,NULL,NULL,NULL,'TestCorporate Deal 1 - Subheading',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10000,NULL,'2016-07-05 10:02:53',NULL,NULL,0,NULL,NULL,'running',0,NULL,'TestCorporate Deal 1',2394,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'div#div-deal-background-image {\n			display: none !important\n			}\n\n			div.overlay {\n			display: none !important;\n			}\n\n			#company_logo{\n				border:0px solid red; \n				width:100%; \n				display:block;\n			}\n\n\n			.ui-btn-text{\n				color: #111;\n				width: 200px;\n				font-size: 10px;\n				margin-top: -19px;\n				margin-left: -10px;\n			}\n\n			#logoblock{\n				display:table-cell; \n				max-height:80px;\n				max-width:80px;\n				float:left; \n				vertical-align:middle;\n				background-repeat:no-repeat;\n				background-size:100%;\n				margin:8px;\n			}\n\n			#location{\n				display:table-cell; \n				height:100%;\n				width:170px;\n			}\n			/* Header */\n			.dealheader {\n				background-color: rgb(153, 138, 205);\n				color: white;\n			}\n			/* Use Now Button */\n			#btn_print_now {\n				border: 1px solid #145072;\n				color: white;\n				background: rgb(199, 199, 32);\n				background-image: -moz-linear-gradient(top, #4E89C5, #2567AB);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #5F9CC5), color-stop(1, #396B9E));\n				border-radius:10px;\n				margin-top:10px;\n			}\n\n			/* Use Now Button Hover*/\n			#btn_print_now:hover {\n				background: orange;\n			}\n\n			/* Use Now Button Text*/\n			#btn_print_now span {\n				padding: .6em 25px;\n				display: block;\n				height: 100%;\n				text-overflow: ellipsis;\n				overflow: hidden;\n				white-space: nowrap;\n				position: relative;\n			}\n\n			/* Terms Details Text */\n			p[name=\'p_instore_discount_instructions\'] {\n				font-size: 8px;\n			}\n\n			/* Terms Button */\n			.terms_button {\n				text-align: center;\n				border: 1px solid gray;\n				background: #FDFDFD;\n				border-radius:10px;\n				background-image: -moz-linear-gradient(top, #EEE, #FDFDFD);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #EEE), color-stop(1, #FDFDFD));}\n\n			.banner-row {background: rgb(209, 209, 129);}\n			.companyname {text-shadow: none;}\n			a.button.success,.button.success:active,.button.success:hover,.button.success:focus {background-color:rgb(199, 199, 32); color: white}\n			body {background:rgb(241, 241, 205);}\n			a.button.details,.button.details:active,.button.details:hover,.button.details:focus {background-color:rgb(48, 191, 57); color: white;}\n			.offerimage div {background-image: none !important;}\n			div.offerimage {background-image:url(\'http://uploads.coupsmart.com.s3.amazonaws.com/04485f294238663f767d73dfffed084d.jpg\')!important;background-position: center center;background-size:contain;background-repeat:no-repeat;height: 300px;}\n			a#change_email {color:#D60000;text-decoration:underline;}\n			div#loaded button#print {display:none !important}',NULL,NULL,'rgb(223, 97, 50)','white',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'alpha-numeric',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+insert into campaigns values (2394,'TestCorporate Deal 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,0,'running',NULL,NULL,NULL,210,'f5501873a0e5a70399eee5f7cdf24605.jpg',1,NULL,NULL,1,NULL,'a4d624581253d06b4f1cc452d508888f.jpg',NULL,NULL,NULL,NULL,NULL,'yes_own',NULL,NULL,'2016-07-05 10:02:53',0,0,0,0,'a4d624581253d06b4f1cc452d508888f.jpg',NULL,NULL,NULL,NULL,NULL,0,NULL,NULL);
+
+drop table if exists `sgs_discounts`;
+CREATE TABLE `sgs_discounts` (
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT,
+  `smart_deal_id` int(16) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `type` int(11) NOT NULL,
+  `begin_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `amount` int(16) DEFAULT NULL,
+  `allowed_uses` int(11) DEFAULT NULL,
+  `conditions` longtext,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;

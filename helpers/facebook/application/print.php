@@ -525,7 +525,7 @@ parse_str($sig_parts, $arr_sig_parts);
 $csapi = new CSAPI();
 $sig = $csapi->generateCSAPISignature($arr_sig_parts);
 $src_URL = $sig_URL  . $sig_parts . ';sig=' . $sig;
-error_log("src_URL in print.php: " . $src_URL);
+// error_log("src_URL in print.php: " . $src_URL);
 
 $browser_info = get_browser(null, true);
 

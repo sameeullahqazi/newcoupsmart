@@ -1,0 +1,172 @@
+
+/* styles for show-facebook-friends */
+body#sgs_body {
+	margin: 0;
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	width: 504px;
+	}
+	
+.select-friends-header {
+	background-color: #6D84B4;
+	color: #fff;
+	height: 25px;
+	width: 494px;
+	padding: 5px;
+	}
+	
+.select-friends-header h2 {
+	font-size: 20px;
+	color: #fff;
+	margin: 0;
+	}
+	
+.friends-list-view-j {
+	overflow-y: scroll;
+	width: auto;
+	max-height: 250px;
+	background-color: #fff;
+	}
+
+div.friends-list-view-j ul.friends-list-j {
+	margin: 5px 0;
+	padding-left:10px;
+	list-style-type: none;
+	}
+	
+.friends-list-j li {
+	width: 155px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	float: left;
+	height: 40px;
+	padding: 3px;
+	display: list-item;
+	overflow: hidden;
+	}
+	
+.friends-list-j li:hover {
+	background-color: #ECEFF5;
+	}
+	
+.friends-list-label-j {
+	padding: 2px;
+	padding-top: 0;
+	display: block;
+	}
+	
+.friend-list-item-j {
+	display: block;
+	}
+	
+.friend-list-item-j:after {
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	}
+	
+.check-npt-j {
+	display: inline;
+	float: left;
+	padding: 5px;
+	height: 12px;
+	position: relative;
+	top: 12px;
+	right: 3px;
+	}
+	
+.friends-list-j img {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	}
+	
+.friend-name-j {
+	display: table-cell;
+	font-size: 12px;
+	height: auto;
+	font-family: 'tahoma', 'arial', arial, sans-serif;
+	color: #333;
+	vertical-align: middle;
+	width: 102px;
+	}
+	
+.friend-name-break-j {
+	word-wrap:break-word;
+	overflow: visible;
+}
+	
+.friend-name-j div {
+	vertical-align: middle;
+	width: inherit;
+	display: table-cell;
+	height: auto;
+	padding-top: 7px;
+	font-size: 12px;
+	}
+	
+.selected_item-j {
+	background-color: #D8DFEA !important;
+	border: 1px #C3CCE1 solid;
+	border-left: none;
+	border-right: none;
+	height: 48px !important;
+	}
+	
+.list-coupon-preview-j {
+	background-color: #f2f2f2;
+	height: 190px;
+	overflow: hidden;
+	}
+	
+.list-preview-right-j {
+	width: 500px;
+	float: right;
+	}
+	
+.list-preview-right-j textarea {
+	width: 95%;
+	float: left;
+	height: 100px;
+	resize: none;
+	margin-right: 10px;
+	}
+	
+.list-preview-left-j {
+	float: left;
+	width: 200px;
+	margin: 5px;
+	height: auto;
+	}
+	
+.list-preview-left-j p {
+	font-size: 9px;
+	}
+	
+.list-preview-left-j img {
+	width: 120px;
+	margin: 0 auto;
+	}
+	
+.list-coupon-submit-j {
+	background-color: #f2f2f2;
+	height: 30px;
+	width: auto;
+	overflow: hidden;
+	}
+	
+.list-coupon-submit-j button {
+	float: right;
+	margin: 5px;
+	}
+	
+.sgs_fb_image-j {
+	width:25px;
+	height:25px;
+	padding-top:7px;
+}
+
+.grayed
+{
+	background-color:#bbbbbb;
+}

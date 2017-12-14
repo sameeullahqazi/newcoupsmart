@@ -1,0 +1,147 @@
+
+.select-friends-header {
+	background-color: #6D84B4;
+	color: #fff;
+	height: 25px;
+	width: 710px;
+	padding: 5px;
+	}
+	
+.select-friends-header h2 {
+	font-size: 20px;
+	color: #fff;
+	margin: 0;
+	}
+	
+.friends-list-view {
+	overflow-y: scroll;
+	width: auto;
+	height: 500px;
+	background-color: #fff;
+	}
+
+.friends-list {
+	margin: 25px 0;
+	list-style-type: none;
+	}
+	
+.friends-list li {
+	width: 200px;
+	margin: 3px;
+	float: left;
+	height: 50px;
+	padding: 3px;
+	display: list-item;
+	overflow: hidden;
+	}
+	
+.friends-list li:hover {
+	background-color: #ECEFF5;
+	}
+	
+.friends-list-label {
+	padding: 2px;
+	padding-top: 0;
+	display: block;
+	}
+	
+.friend-list-item {
+	display: block;
+	}
+	
+.friend-list-item:after {
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	}
+	
+.check-npt {
+	display: inline;
+	float: left;
+	padding: 5px;
+	height: 12px;
+	position: relative;
+	top: 12px;
+	right: 3px;
+	}
+	
+.friends-list img {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	}
+	
+.friend-name {
+	display: table-cell;
+	font-size: 12px;
+	height: 48px;
+	font-family: 'tahoma', 'arial', arial, sans-serif;
+	color: #333;
+	vertical-align: middle;
+	width: 122px;
+	}
+	
+.friend-name div {
+	vertical-align: middle;
+	width: 100%;
+	display: block;
+	height: 30px;
+	padding-top: 2px;
+	font-size: 12px;
+	}
+	
+.selected_item {
+	background-color: #D8DFEA !important;
+	border: 1px #C3CCE1 solid;
+	border-left: none;
+	border-right: none;
+	height: 48px !important;
+	}
+	
+.list-coupon-preview {
+	background-color: #f2f2f2;
+	height: 190px;
+	overflow: hidden;
+	}
+	
+.list-preview-right {
+	width: 500px;
+	float: right;
+	}
+	
+.list-preview-right textarea {
+	width: 95%;
+	float: left;
+	height: 100px;
+	resize: none;
+	margin-right: 10px;
+	}
+	
+.list-preview-left {
+	float: left;
+	width: 200px;
+	margin: 5px;
+	height: auto;
+	}
+	
+.list-preview-left p {
+	font-size: 9px;
+	}
+	
+.list-preview-left img {
+	width: 120px;
+	margin: 0 auto;
+	}
+	
+.list-coupon-submit {
+	background-color: #f2f2f2;
+	height: 30px;
+	width: auto;
+	overflow: hidden;
+	}
+	
+.list-coupon-submit button {
+	float: right;
+	margin: 5px;
+	}

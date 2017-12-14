@@ -585,6 +585,94 @@ class Item extends BasicDataObject
 		
 		}
 	}
+	
+	public static function getSavedDealsForLater($smart_deals_user_id)
+	{
+		// $sql = "select id as saved_for_later_id, item_id from items_saved_for_later where `user_fb_id` = '".Database::mysqli_real_escape_string($user_fb_id)."' and `printed` = '0'";
+		$sql = "select id as saved_for_later_id, item_id, created, modified, smart_deals_user_id
+				from items_saved_for_later 
+				where `smart_deals_user_id` = '".Database::mysqli_real_escape_string($smart_deals_user_id)."' 
+				and `printed` = '0'";
+		
+		// error_log("SQL in Item::getSavedDealsForLater(): ".$sql);
+		$rows = BasicDataObject::getDataTable($sql);
+		
+		if(count($rows) > 0)
+		{
+			$days_passed = ( ( time() - strtotime($rows[0]['modified']) ) / (3600 * 24) );
+			// error_log('time: ' . time() . ', modified: ' . strtotime($rows[0]['modified']) . ', days_passed: ' . $days_passed);
+			
+			// Updating cookie data in case 21 days have passed
+			if( $days_passed > 21) // 3 weeks have passed since the cookie was last modified
+			{
+				$cookie_id = $rows[0]['smart_deals_user_id'];
+				$expire_time = time() + 60 * 60 * 24 * 30; // Set expire time to a month
+				setcookie("smart_deals_user_id", $cookie_id, $expire_time, "/");
+				$update_sql = "update `items_saved_for_later` set `modified` = now() where `smart_deals_user_id` = '".$cookie_id."'";
+				Database::mysqli_query($update_sql);
+			}
+		}
+		
+		return $rows;
+	}
+	
+	public static function getSmartLinkClickInfo()
+	{
+		$ip = Common::GetUserIp();
+		$user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$session_id = session_id();
+		$sql = "select * from smart_link_clicks where ip = '$ip' and user_agent = '$user_agent' and session_id = '$session_id' and viewed = 0 order by id desc limit 1";
+		// error_log("sql in Item::getSmartLinkClickInfo(): " . $sql);
+		return BasicDataObject::getDataRow($sql);
+	}
+	
+	public static function updateSmartLinkClickInfo($smart_link_click_id)
+	{
+		$sql = "update smart_link_clicks set viewed = '1' where id = '$smart_link_click_id'";
+		if(!Database::mysqli_query($sql))
+			error_log("Update SQL error: " . Database::mysqli_error() . "\nSQL: " . $sql);
+	}
+	
+	public static function isSGSDiscount($item_id)
+	{
+		$sql = '
+			select code
+			from sgs_discounts
+			where smart_deal_id = "' . $item_id . '";
+		';
+		$is_discount = BasicDataObject::getDataRow($sql);
+		
+		return empty($is_discount) ? false : $is_discount['code'];
+		
+	}
+	
+	public static function canUserClaimMagentoItem($user_id, $item_id)
+	{
+		$result = true;
+		$sql = "select i.id, i.limit_per_person, count(ui.id) as num_prints_used
+				from items i, user_items ui
+				left join users u on u.id = ui.user_id
+				where i.id = '" . Database::mysqli_real_escape_string($item_id) . "'
+				and ui.`item_id` = '" . Database::mysqli_real_escape_string($item_id) . "'
+				and ui.user_id = '" . Database::mysqli_real_escape_string($user_id) . "'
+				and ui.has_hit_magento_website = '1'
+				and u.status = 'active';
+		";
+		
+		$rs = Database::mysqli_query($sql);
+		if($rs && Database::mysqli_num_rows($rs) > 0)
+		{
+			$row = Database::mysqli_fetch_assoc($rs);
+			$limit_per_person = $row['limit_per_person'];
+			$num_prints_used = $row['num_prints_used'];
+
+			if( $num_prints_used  >= $limit_per_person) {
+				$result = false;
+			}
+		}
+		Database::mysqli_free_result($rs);
+		return $result;
+	}
 }
 
 ?>

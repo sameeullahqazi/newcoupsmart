@@ -1,0 +1,21 @@
+#deals_vertical ul.coupon_page li.featured {
+background-size: contain;
+-webkit-background-size: contain;     
+    -moz-background-size: contain;         
+       -o-background-size: contain;    
+min-height: inherit;   
+}
+
+div.coupon_controls.ia.style2.twelve {
+position: absolute;
+bottom: 10px;
+right: 320px;
+background-color: transparent;
+}
+
+.reveal-modal {
+	position: absolute !important;
+	top: 0px !important;
+	left: 300px !important;
+	max-width: 480px !important;
+}

@@ -16,7 +16,6 @@ var start_date_time;
 var func_params = []; // This will hold the function and the params to run when 'Show me the Permissions Again' button is clicked
 							// 0 - 1st param, 1 - 2nd param, 2 - The function to run. 
 var url_to_share = '<?php print $url_to_share; ?>';
-// var url_to_share = '<?php print Common::getBaseURL(true) . "/page_redirects.php?" . urlencode(base64_encode($app_link)); ?>';
 var app; // I'm not sure if this variable is already defined some place else; currently it's giving me a 'variable undefined' error
 var print_permissions = ['email','user_birthday','user_location','user_relationships', 'user_likes', 'user_friends'];
 var print_permissions_granted = false;

@@ -261,5 +261,157 @@ class Company extends BasicDataObject
 		return $result;
 	}
 	
+	public static function GetFacebookPageId($company_id) {
+		$sql = "select facebook_page_id from companies where id = '" . Database::mysqli_real_escape_string($company_id) . "'";
+		$rs = Database::mysqli_query($sql);
+		if ($rs && Database::mysqli_num_rows($rs) == 1) {
+			$row = Database::mysqli_fetch_assoc($rs);
+			Database::mysqli_free_result($rs);
+			return $row['facebook_page_id'];
+		} else {
+			return null;
+		}
+	}
+
+	public static function GetFacebookLink($app_id, $facebook_page_id){
+		$company_url = "https://graph.facebook.com/$facebook_page_id";
+
+		$response = file_get_contents($company_url);
+		// if(!$response)
+		//	throw new Exception("Error retrieving company info: ");
+
+		$response = json_decode($response, true);
+
+		if(!is_null($response) && isset($response['link'])){
+			$link = $response['link'] . '?sk=app_' . $app_id;
+		}else{
+			$link = 'http://facebook.com/' . facebook_page_id . '?sk=app_' . $app_id;
+		}
+
+		return $link;
+	}
+
+	public static function GetCompanyIdByFacebookPageId($facebook_page_id) {
+		$sql = "select id from companies where facebook_page_id = '" . Database::mysqli_real_escape_string($facebook_page_id) . "'";
+		//error_log("SQL in GetCompanyIdByFacebookPageId(): ".$sql);
+		$rs = Database::mysqli_query($sql);
+		if ($rs && Database::mysqli_num_rows($rs) > 0) {
+			$row = Database::mysqli_fetch_assoc($rs);
+			Database::mysqli_free_result($rs);
+			return $row['id'];
+		} else {
+			return null;
+		}
+	}
+
+	public static function GetCompanyByFacebookId($fb_page_id) {
+		$sql = "select * from companies where facebook_page_id = '" . Database::mysqli_real_escape_string($fb_page_id) . "'";
+		$rs = Database::mysqli_query($sql);
+		// error_log('company id lookup: '. $sql);
+		if($rs && Database::mysqli_num_rows($rs)>0){
+			$row = Database::mysqli_fetch_assoc($rs);
+			$company = new self();
+			foreach($row as $var => $data){
+				$company->$var = $data;
+			}
+			Database::mysqli_free_result($rs);
+			return $company;
+		} else {
+			return null;
+		}
+	}
+
+	public static function getCompanyInfo($company_id){
+		$sql = "Select default_coupon_image from companies where id = " . Database::mysqli_real_escape_string($company_id);
+		$result = Database::mysqli_query($sql);
+		$row = null;
+		if($result && Database::mysqli_num_rows($result) > 0 ){
+			$row = mysql_fetch_row($result);
+
+		}
+		return $row;
+	}
+	
+	public static function checkForPageAuthentication($company_id, $app_data, $auth_salt_value = null)
+	{	
+		$json_decoded_app_data = json_decode($app_data, true);
+		// error_log("func args in Company::checkForPageAuthentication(): ". var_export(func_get_args(), true));
+		// error_log("json_decoded_app_data in Company::checkForPageAuthentication(): " . var_export($json_decoded_app_data, true));
+		
+		try
+		{
+			if(empty($auth_salt_value))
+			{
+				$company = new Company($company_id);
+				$auth_salt_value = $company->auth_salt_value;
+			}
+
+			if(!empty($auth_salt_value))
+			{
+				if($json_decoded_app_data['is_auth'] != '1')
+					throw new Exception("Invalid parameter value for 'is_auth'!"); 
+				
+				if($json_decoded_app_data['company_id'] != $company_id)
+					throw new Exception("Invalid parameter value for 'company_id'!"); 
+				
+				$sig_to_check = $json_decoded_app_data['sig'];
+				
+				/*
+				$auth_salt_cookie_name = 'isAuthEnabled';
+				$auth_salt_cookie_value = md5($auth_salt_value . ($company_id + 3) . 'Sdfg34DFGd');
+				$cookie_expire_time = 3600 * 24 * 30;
+				
+			
+				//	check if user has downloaded the app previously at some point in time. use a cookie to check this.
+				
+				if(!empty($_COOKIE[$auth_salt_cookie_name]))
+				{
+					if($_COOKIE[$auth_salt_cookie_name] != $auth_salt_cookie_value)
+					{
+						error_log("Invalid cookie value in Company::checkIfAuthEnabled(): ");
+						throw new Exception("Invalid cookie value. It seems to have been tampered with!");
+					}
+					else
+					{
+						//	if cookie is set then extend the expire time of the cookie and proceed with the page load
+						$is_cookie_set = setcookie($auth_salt_cookie_name, $auth_salt_cookie_value, time() + $cookie_expire_time, '/');
+						if(!$is_cookie_set)
+							throw new Exception("Couldn't extend cookie expire time. Maybe you have cookies disabled in your browser?");
+					}
+				}
+				else	//	else
+				{
+					//	calculate signature to check to see if the user has been redirected from the client's page just following the app download
+					//	if the signature is invalid show an error
+					
+					$is_signature_valid = Common::checkAuthSaltSignature($company_id, $auth_salt_value, $sig_to_check);
+					if(!$is_signature_valid)
+					{
+						throw new Exception("Invalid signature. Authentication failed.");
+					}
+					else	//	else if the signature is valid,
+					{
+						//	set a cookie to expire after one year and proceed with the page load.
+						$is_cookie_set = setcookie($auth_salt_cookie_name, $auth_salt_cookie_value, time() + $cookie_expire_time, '/');
+						error_log("is_cookie_set in Company::checkForPageAuthentication(): " . var_export($is_cookie_set, true));
+						if(!$is_cookie_set)
+							throw new Exception("Couldn't set cookie. Maybe you have cookies disabled in your browser?");
+					}
+				}
+				*/		
+				$is_signature_valid = Common::checkAuthSaltSignature($company_id, $auth_salt_value, $sig_to_check);
+				if(!$is_signature_valid)
+				{
+					throw new Exception("Invalid signature. Authentication failed.");
+				}
+			}
+		}
+		catch(Exception $e)
+		{
+			die ("Error: " . $e->getMessage());
+			// return array('error' => $e->getMessage());
+		}
+	}
+	
 }
 ?>

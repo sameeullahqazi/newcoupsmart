@@ -1,0 +1,197 @@
+a {
+	text-decoration: none;
+	color: #04385b;
+	}
+
+a:hover {
+	color: #3E8C30;	
+	}
+
+p {
+	font-size: 14px;
+	color: #1a1a1a;
+	margin: 0 5px 5px 5px;
+	}
+	
+.coupon-view-width-override {
+	width: 90% !important;
+	}
+
+.coupon-holder {
+	width: 240px;
+	display: inline;
+	float: left;
+	margin: 5px;
+	}
+	
+.coup-head {
+	background-color: #04385b;
+	width: 240px;
+	height: 75px;
+	border-radius: 10px 10px 0 0;
+	}	
+	
+.deal-short {
+	display: block;
+	height: 10px;
+	overflow: visible;
+	}
+	
+.deal-short img {
+	position: relative;
+	left: -5px;
+	top: 15px;
+	}	
+	
+.deal-long {
+	width: 155px;
+	float: right;
+	display: inline;
+	font-size: 16px;
+	color: #eee;
+	margin-top: 5px;
+	font-weight: bold;
+	}
+	
+.hood {
+	width: 240px;
+	height: 20px;
+	display: block;
+	font-size: 16px;
+	color: #222;
+	font-weight: bold;
+	text-align: right;
+	background-color: transparent;
+	padding-right: 5px;
+	}
+
+.coup-logo {
+	background-color: #fff;
+	width: 238px;
+	margin: 0;
+	border: 1px #ccc solid;
+	height: 100px;
+	}
+	
+.coup-logo img{
+	margin: 5px auto;
+	height: 80px;
+	display: block;
+	width: 200px;
+	position: relative;
+	}
+
+.coupon-body {
+	height: 150px;
+	overflow: hidden;
+	border: 7px #04385b solid;
+	width: 286px;
+	}	
+	
+.coupon-body:hover {
+	height: auto;
+	border: 7px #04385b solid;
+	width: 286px;
+	}	
+	
+.deal-address{
+	width: 250px;
+	margin: 5px 5px 10px 5px;
+	padding: 5px 0;
+	}	
+	
+.toolbox {
+	width: 240px;
+	background-color: #04385b;
+	height: 50px;
+	}
+	
+.toolbox .tool-option {
+	width: 50px;
+	height: 50px;
+	display: inline;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	}
+	
+.toolbox .tool-option:hover {
+	width: 50px;
+	height: 40px;
+	display: inline;
+	float: left;
+	background-color: #3E8C30;
+	position: relative;
+	border-top: 11px #3e8c30 solid;
+	}
+	
+.tool-text{
+	width: 240px;
+	color: #fff;
+	font-weight: bold;
+	padding-top: 5px;
+	background-color: #3E8C30;
+	overflow: visible;	
+	height: 30px;
+	display: none;
+	}
+
+	
+.tool-img{
+	display: inline;
+	float: left;
+	margin-bottom: 10px;
+	}
+	
+.tool-save {
+	
+	}
+	
+.tool-print {
+	
+	}
+	
+/* web coupons dynamic display	*/
+ul.coupon-list {
+	background-color: white;
+	width: auto;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	}
+
+ul.coupon-list li {
+	width: 240px;
+	float: left;
+	display: inline;
+	margin: 5px 0 5px 0;
+	position: relative;
+	z-index: 2;
+	}
+	
+.coup-top {
+	display: block;
+	width: 240px;
+	position: relative;
+	}
+	
+.coup-bttm {
+	height: auto;
+	width: 240px;
+	display: none;
+	position: absolute;
+	z-index: 1;
+	background-color: #ccc;
+	}
+
+ul.coupon-list li:hover .coup-top {
+	display: block;
+	z-index: 99;
+	}	
+
+ul.coupon-list li:hover .coup-bttm {
+	display: block;
+	z-index: 88;
+	}	
+	

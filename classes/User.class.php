@@ -575,6 +575,226 @@ class User extends BasicDataObject
 		return $errors;
 	}
 	
+	public static function quick_register_facebook_authenticate_no_email($facebook_user_details)
+	{
+		
+		//error_log('facebook user details: '. var_export($facebook_user_details, true));
+		$errors = array();
+		if(is_object($facebook_user_details)){
+			$facebook_user_details = (array)$facebook_user_details;
+		}
+
+		if(empty($errors))
+		{
+			$fb_id = $facebook_user_details['id'];
+			$em = isset($facebook_user_details['email']);
+			$quick_email = $em ? $facebook_user_details['email'] : 'NOEMAIL';
+			
+			if(!$em){
+				$test_email = $quick_email;
+				$some_user = User::findbyEmail($test_email);
+				$counter = 1;
+				while($some_user !== false){
+					$test_email = $quick_email . $counter;
+					$some_user = User::findByEmail($test_email);
+					$counter++;
+				}
+				$quick_email = $test_email;
+			}
+
+			$user = User::findByFacebookId($fb_id);
+			$user = (!$user && $em) ? User::findbyEmail($quick_email) : $user;
+			
+			if(empty($user) || !$user){
+				//error_log("there were no errors! " . __LINE__) ;
+				$counter = 0;
+			
+				// Generating username
+				$username = $em ? explode('@', $quick_email) : 
+						array($facebook_user_details['first_name'] . $facebook_user_details['last_name']);
+				$username = $username[0];
+				$test_username = $username;
+				
+				$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstvwxyz";
+				while(User::username_exists($test_username))
+				{
+					$test_username = $username.$counter;
+					$counter++;
+				}
+				$username = $test_username;
+			
+				// Generating password
+				$password = "";
+				for($i = 0; $i < 7; $i++)
+					$password .= $characters[rand(0, strlen($characters) - 1)];
+				$user = new User();
+			
+				$md5_password = md5($password . $user->salt);
+			}
+			
+			$facebook_id = $facebook_user_details['id'];
+			$firstname = $facebook_user_details['first_name'];
+			$lastname = $facebook_user_details['last_name'];
+			$gender = !empty($facebook_user_details['gender']) && $facebook_user_details['gender'] == 'male' ? 'M' : 'F';
+			
+			$date_of_birth = null;
+			if(isset($facebook_user_details['birthday']))
+			{
+				//error_log("the birthday was set! " . __LINE__) ;
+				$date_of_birth = $facebook_user_details['birthday'];
+				$date_of_birth = explode('/', $date_of_birth);
+				$date_of_birth[2] = isset($date_of_birth[2]) ? $date_of_birth[2] : '0000';
+				$date_of_birth = $date_of_birth[2] . '-'. $date_of_birth[0] . '-'.  $date_of_birth[1];
+			}
+			
+			if(is_object($facebook_user_details)){
+				//error_log("it thinks its an object! " . __LINE__) ;
+				$facebook_user_details['location'] = (array)$facebook_user_details['location'];
+			}
+				
+			
+			if(is_object($facebook_user_details['location'])){
+				$facebook_location_id = !empty($facebook_user_details['location']->id) ? $facebook_user_details['location']->id : null;
+				$facebook_location_name = !empty($facebook_user_details['location']->id) ? $facebook_user_details['location']->name : null;
+			}else{
+				$facebook_location_id = !empty($facebook_user_details['location']['id']) ? $facebook_user_details['location']['id'] : null;
+         		$facebook_location_name = !empty($facebook_user_details['location']['name']) ? $facebook_user_details['location']['name'] : null;
+				$relationship_status = !empty($facebook_user_details['relationship_status']) ? $facebook_user_details['relationship_status'] : null;
+			}
+			
+			$fb_friends = json_decode(json_encode($facebook_user_details['friends']), true);
+			$fb_friend_count = !empty($fb_friends['summary']['total_count']) ? $fb_friends['summary']['total_count'] : !empty($fb_friends['data']) ? count($fb_friends['data']) : 0;
+			//error_log("User object in quick_register_facebook_authenticate: ".var_export($user, true));
+			if(!empty($user->id))
+			{
+				//error_log("user: " . __LINE__ . var_export($user, true));
+				//Check existing record under given facebook id
+				$strGetEsixtingRecordSQL = "SELECT facebook_id, firstname, lastname, gender, date_of_birth,";
+				$strGetEsixtingRecordSQL.= "facebook_location_id, facebook_location_name, relationship_status, email, fb_friend_count FROM users WHERE id= '" . Database::mysqli_real_escape_string($user->id) . "'".";";
+
+				$result = Database::mysqli_query($strGetEsixtingRecordSQL);
+				
+				if (!$result)
+					{
+						error_log('!!!!!!!! ----- !RESULT -------!!!!!!!');
+						$message  = 'Invalid query: ' . Database::mysqli_error() . "\n";
+						$message .= 'Whole query: ' . $strGetEsixtingRecordSQL;
+						die($message);
+					}
+					
+				$arrExistingRecord = array();
+				while ($row = Database::mysqli_fetch_assoc($result))
+					{
+						//assign results to an array
+						$arrExistingRecord[1]=$row['facebook_id'];
+						$arrExistingRecord[2]=$row['firstname'];
+						$arrExistingRecord[3]=$row['lastname'];
+						$arrExistingRecord[4]=$row['gender'];
+						$arrExistingRecord[5]=$row['date_of_birth'];
+						$arrExistingRecord[6]=$row['facebook_location_id'];
+						$arrExistingRecord[7]=$row['facebook_location_name'];
+						$arrExistingRecord[8]=$row['relationship_status'];
+						$arrExistingRecord[9]=$row['email'];
+						$arrExistingRecord[10]=$row['fb_friend_count'];
+						
+					}
+					
+				$quick_email = $em ? $quick_email : $user->email;
+					
+				$arrIncomingData = array();
+				$arrIncomingData[1] = Database::mysqli_real_escape_string($facebook_id);
+				$arrIncomingData[2] = Database::mysqli_real_escape_string($firstname);
+				$arrIncomingData[3] = Database::mysqli_real_escape_string($lastname);
+				$arrIncomingData[4] = Database::mysqli_real_escape_string($gender);
+				$arrIncomingData[5] = Database::mysqli_real_escape_string($date_of_birth);
+				$arrIncomingData[6] = Database::mysqli_real_escape_string($facebook_location_id);
+				$arrIncomingData[7] = Database::mysqli_real_escape_string($facebook_location_name);
+				$arrIncomingData[8] = Database::mysqli_real_escape_string($relationship_status);
+				$arrIncomingData[9] = Database::mysqli_real_escape_string($quick_email);
+				$arrIncomingData[10] = Database::mysqli_real_escape_string($fb_friend_count);
+
+
+				/* CUASING PROBLEMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+				$i =1;
+				WHILE (	$i <= count($arrExistingRecord))
+				{
+					if ($arrExistingRecord[$i] != $arrIncomingData[$i])
+					    {
+						//error_log('######### ARRAYS NOT EQUAL#########');
+						//update 'User' table with new data
+						$strUpdateSQL = "UPDATE users set facebook_id = '" .Database::mysqli_real_escape_string($facebook_id)."',";
+						$strUpdateSQL .= "firstname = '".Database::mysqli_real_escape_string($firstname)."',";
+						$strUpdateSQL .= "lastname = '".Database::mysqli_real_escape_string($lastname)."',";
+						$strUpdateSQL .= "gender = '".Database::mysqli_real_escape_string($gender)."',";
+						$strUpdateSQL .= "date_of_birth = '".Database::mysqli_real_escape_string($date_of_birth)."',";
+						$strUpdateSQL .= "facebook_location_id = '".Database::mysqli_real_escape_string($facebook_location_id)."',";
+						$strUpdateSQL .= "facebook_location_name = '".Database::mysqli_real_escape_string($facebook_location_name)."',";
+						$strUpdateSQL .= "relationship_status = '".Database::mysqli_real_escape_string($relationship_status)."',";
+						$strUpdateSQL .= "fb_friend_count = '".Database::mysqli_real_escape_string($fb_friend_count)."',";
+						$strUpdateSQL .= "modified = now()";
+						$strUpdateSQL .= " WHERE id = '" .Database::mysqli_real_escape_string($user->id)."';";
+
+						
+						Database::mysqli_query($strUpdateSQL);
+						
+						break;
+					    }
+					    
+					$i++;
+				}
+						
+				Database::mysqli_free_result($result);
+
+				$user = new User($user->id);
+				return $user;
+			}
+			else
+			{
+				//error_log("checking for a user that looks like this guy.... " . __LINE__) ;
+				$check_sql = "SELECT email, username FROM users WHERE";
+				$check_sql .= $em ? "email = '" . Database::mysqli_real_escape_string($fb_id) .  "'" : ' OR '; 
+				$check_sql .= "username = '" . Database::mysqli_real_escape_string($username) . "'";
+				$result = Database::mysqli_query($check_sql);
+
+				if($result && Database::mysqli_num_rows($result) > 0)
+				{
+					$row = Database::mysqli_fetch_assoc($result);
+					$row2 = Database::mysqli_fetch_assoc($customer_result);
+					if($username == $row['username'])
+					{
+						$errors_site['quick'] = 'Duplicate username; please try again';
+						$errors['quick'] = 'Duplicate username; please try again';
+					}
+					else
+					{
+						$errors_site['quick'] = 'Duplicate email address; please try again';
+						$errors['quick'] = 'Duplicate email address; please try again';
+					}
+					return $errors;
+				}else{
+					$email = Database::mysqli_real_escape_string($quick_email);
+				}
+				
+				// If it doesn't create a new user
+				$user = new User();
+
+				$sql = "INSERT INTO users (`username`, `facebook_id`,  `email`, `password`, `firstname`, `lastname`, `gender`, `date_of_birth`,`facebook_location_id`, `facebook_location_name`, `relationship_status`, `fb_friend_count`, `created`, `modified`) VALUES ('" . Database::mysqli_real_escape_string($username) . "', '" . Database::mysqli_real_escape_string($facebook_id) . "', '" . Database::mysqli_real_escape_string($email) . "', '" . Database::mysqli_real_escape_string($md5_password) . "', '" . Database::mysqli_real_escape_string($firstname) . "', '" . Database::mysqli_real_escape_string($lastname) . "', '" . Database::mysqli_real_escape_string($gender) . "', '" . Database::mysqli_real_escape_string($date_of_birth) . "','" . Database::mysqli_real_escape_string($facebook_location_id) . "','" . Database::mysqli_real_escape_string($facebook_location_name) . "', '" . Database::mysqli_real_escape_string($relationship_status) . "', $fb_friend_count, NOW(), NOW())";
+				$results = Database::mysqli_query($sql);
+				if(!$results)
+					error_log("SQL Insert error in User::quick_register_facebook_authenticate(): ".Database::mysqli_error(). "\nSQL: " . $sql);
+				$user_id = Database::mysqli_insert_id();
+				$_SESSION['new_user_claim'] = '1';
+
+				if ($results) {
+					$user = new User($user_id);
+					return $user;
+				}
+			}
+		}
+		
+		return $errors;
+	}
+	
 	public static function getAndStoreUserInterestsAndLikes($user_id, $access_token, $facebook_id = null, $item_id = null, $company_id = null)
 	{
 		global $app_version;
@@ -974,6 +1194,55 @@ class User extends BasicDataObject
 		// Mark User as suspicious
 		$sql = "update users set `status` = 'suspicious' where id = '$user_id'";
 		Database::mysqli_query($sql);
+	}
+	
+	public static function donationAlreadyMadeByUser($user_fb_id, $company_id, $app_name)
+	{
+		if(empty($user_fb_id))
+		{
+			$user_agent = !empty($_SERVER['HTTP_USER_AGENT']) ? Database::mysqli_real_escape_string($_SERVER['HTTP_USER_AGENT']) : null;
+			// Check for same browser and IP
+			$ip = Common::GetUserIp();
+			$sql = "select count(id) as num_rows from donations where ip = '$ip' and user_agent = '$user_agent'";
+		}			
+		else	
+		{
+			$sql = "select count(id) as num_rows from donations where facebook_id = '$user_fb_id' and company_id = '$company_id'"; //  and app_name = '$app_name'";
+		}
+		// error_log("SQL in User::donationAlreadyMadeByUser(): " . $sql);
+		$row = BasicDataObject::getDataRow($sql);
+		return $row['num_rows'] > 0;
+	}
+	
+	public static function getUserIdByFacebookIdOrAppScopedUserId($fb_id)
+	{
+		$user_id = 0;
+		$fb_id = Database::mysqli_real_escape_string($fb_id);
+		$sql = "select id from users where facebook_id = '$fb_id' or fb_app_scoped_user_id = '$fb_id'";
+		$row = BasicDataObject::getDataRow($sql);
+		if(!empty($row))
+			$user_id = $row['id'];
+
+		return $user_id;
+	}
+	
+	public static function isBlockedAppUser($app_name, $facebook_id = null, $user_id = null)
+	{
+		$reason = null;
+		// error_log("args in User::getBlockedAppUserReason(): " . var_export(func_get_args(), true));
+		if(empty($facebook_id) && empty($user_id))
+			return null;
+	
+		$sql = "select id from blocked_app_users where app_name = '" . Database::mysqli_real_escape_string($app_name) . "'";
+		if(!empty($facebook_id))
+			$sql .= " and facebook_id = '" . Database::mysqli_real_escape_string($facebook_id). "'";
+		
+		if(!empty($user_id))
+			$sql .= " and user_id = '" . Database::mysqli_real_escape_string($user_id). "'";
+		
+		// error_log("SQL in User::getBlockedAppUserReason(): " . $sql);
+		$row = BasicDataObject::getDataRow($sql);
+		return !empty($row['id']);
 	}
 	
 }
