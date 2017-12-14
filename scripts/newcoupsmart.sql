@@ -1372,7 +1372,7 @@ insert into campaigns values (2411,'Get your free Code - Report',NULL,NULL,NULL,
 INSERT INTO `deals` VALUES (1290,1147,'Free coupon code',NULL,NULL,'2017-12-13 09:21:42',NULL);
 
 
--------------------- Deployed till this point 13th Dec 2017 --------------------
+-- Deployed last
 update companies set facebook_page_id = '280685912042335' where id = 1147;
 
 drop table if exists `users_notifications`;
