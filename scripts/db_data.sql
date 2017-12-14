@@ -10,3 +10,5 @@ insert into voucher_layout_parts (select * from dev_coupsmart.voucher_layout_par
 
 insert into newcoupsmart.items (select * from dev_coupsmart.items where id = 2394);
 insert into newcoupsmart.campaigns (select * from dev_coupsmart.campaigns where id = 2394);
+
+insert into newcoupsmart.email_templates (select * from dev_coupsmart.email_templates);

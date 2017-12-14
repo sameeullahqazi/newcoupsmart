@@ -2,6 +2,7 @@
 require_once(dirname(__DIR__) . '/includes/email_parsing.php');
 require_once(dirname(__DIR__) . '/includes/UUID.php');
 require_once(dirname(__DIR__) . '/includes/app_config.php');
+require_once(dirname(__DIR__) . '/libraries/emogrifier/emogrifier.php');
 
 /*
 require_once(dirname(__DIR__) . '/classes/Common.class.php');

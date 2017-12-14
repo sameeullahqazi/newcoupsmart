@@ -16,237 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `items`
+-- Table structure for table `email_templates`
 --
 
-DROP TABLE IF EXISTS `items`;
+DROP TABLE IF EXISTS `email_templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `items` (
-  `id` bigint(32) unsigned NOT NULL AUTO_INCREMENT,
-  `type_id` int(11) DEFAULT NULL,
-  `sort_order` int(10) DEFAULT NULL,
-  `manufacturer_id` bigint(32) unsigned NOT NULL,
-  `deal_id` int(10) DEFAULT NULL,
-  `upc` varchar(15) DEFAULT NULL,
-  `short_name` varchar(50) DEFAULT NULL,
-  `name` varchar(65) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `details` varchar(255) DEFAULT NULL,
-  `details_preview` varchar(255) DEFAULT NULL,
-  `small_type` text,
-  `small_type_preview` text,
-  `claim_button_text` varchar(255) DEFAULT NULL,
-  `gmap` text,
-  `us_time_zone` varchar(5) DEFAULT NULL,
-  `start_date` datetime NOT NULL,
-  `end_date` datetime DEFAULT NULL,
-  `expires` datetime DEFAULT NULL,
-  `delivery_method` int(10) unsigned NOT NULL,
-  `limit_per_person` int(16) unsigned NOT NULL,
-  `retail_price` decimal(9,2) DEFAULT NULL,
-  `savings` decimal(9,2) DEFAULT NULL,
-  `offer_code` char(3) DEFAULT NULL,
-  `offer_value` varchar(255) DEFAULT NULL,
-  `offer_value_preview` varchar(255) DEFAULT NULL,
-  `social_offer_service_name` varchar(65) DEFAULT NULL,
-  `social_offer_code` char(3) DEFAULT NULL,
-  `social_offer_value` varchar(255) DEFAULT NULL,
-  `platform_social_small_type` text,
-  `num_friends` int(10) unsigned DEFAULT NULL,
-  `social_small_type` text,
-  `new_fan_offer` varchar(250) DEFAULT NULL,
-  `use_coupon_barcode` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `barcode_co_prfx` char(6) DEFAULT NULL,
-  `barcode_family_code` char(3) DEFAULT NULL,
-  `barcode_social_family_code` char(3) DEFAULT NULL,
-  `barcode_offer_code` char(5) DEFAULT NULL,
-  `barcode_social_offer_code` char(5) DEFAULT NULL,
-  `barcode_social_offer_service_name` varchar(100) DEFAULT NULL,
-  `expire_month` int(3) unsigned DEFAULT NULL,
-  `expire_year` int(3) unsigned DEFAULT NULL,
-  `inventory_count` bigint(20) DEFAULT NULL,
-  `controlled_printable_image` varchar(255) DEFAULT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `admin_approval` bit(1) DEFAULT NULL,
-  `supplied` bigint(20) DEFAULT NULL,
-  `committed` bigint(20) DEFAULT NULL,
-  `shipped` bigint(20) DEFAULT NULL,
-  `social_print_count` bigint(20) DEFAULT NULL,
-  `status` enum('pending','running','finished','stopped','paused','deleted') DEFAULT NULL,
-  `needs_clearinghouse` tinyint(1) unsigned DEFAULT '0',
-  `needs_clearinghouse_barcode` varchar(15) DEFAULT NULL,
-  `campaign_name` varchar(150) DEFAULT NULL,
-  `campaign_id` int(10) unsigned DEFAULT NULL,
-  `view_count` bigint(20) unsigned DEFAULT '0',
-  `platform_social_offer_service_name` varchar(65) DEFAULT NULL,
-  `platform_social_offer_code` char(3) DEFAULT NULL,
-  `platform_social_offer_value` varchar(255) DEFAULT NULL,
-  `platform_social_offer_small_type` text,
-  `platform_num_friends` int(10) unsigned DEFAULT NULL,
-  `instore_main_text` text,
-  `instore_btn_view_offers_text` varchar(50) DEFAULT NULL,
-  `instore_email_print_btn` tinyint(1) unsigned DEFAULT '1',
-  `instore_email_onscreen_btn` tinyint(1) unsigned DEFAULT '1',
-  `instore_email_footer_content` text,
-  `instore_email_from` varchar(100) DEFAULT NULL,
-  `instore_email_subject` varchar(100) DEFAULT NULL,
-  `instore_email_header_img` varchar(100) DEFAULT NULL,
-  `instore_email_header_caption` varchar(100) DEFAULT NULL,
-  `banner_image_link_url` text,
-  `voucher_layout_id` int(16) unsigned DEFAULT NULL,
-  `redirect_url` text,
-  `static_fulfillment_html` text,
-  `hotel_discount_id` varchar(50) DEFAULT NULL,
-  `hotel_discount_percent` decimal(9,2) DEFAULT NULL,
-  `hotel_discount_amount` decimal(9,2) DEFAULT NULL,
-  `share_own_wall` tinyint(4) DEFAULT '1',
-  `share_friends_wall` tinyint(4) DEFAULT '1',
-  `share_send_request` tinyint(1) DEFAULT '0',
-  `magento_email_check` tinyint(4) DEFAULT NULL,
-  `magento_landing_page` varchar(255) DEFAULT NULL,
-  `magento_landing_page_url` text,
-  `magento_landing_page_setup_header` text,
-  `magento_landing_page_setup_body` text,
-  `white_label_css` longtext,
-  `white_label_css_1` text,
-  `white_label_css_2` text,
-  `white_label_css_3` text,
-  `white_label_css_4` text,
-  `button_color` varchar(30) DEFAULT NULL,
-  `button_text_color` varchar(30) DEFAULT NULL,
-  `button_details_color` varchar(30) DEFAULT NULL,
-  `mo_headline_bg` varchar(30) DEFAULT NULL,
-  `mo_headline_text_color` varchar(30) DEFAULT NULL,
-  `mo_header_color` varchar(30) DEFAULT NULL,
-  `mo_body_color` varchar(30) DEFAULT NULL,
-  `company_sdw_unique_codes_id` int(11) DEFAULT NULL,
-  `show_print_options` tinyint(1) DEFAULT '0',
-  `csc_reveal_deal_content` text,
-  `csc_reveal_deal_content_mobile` text,
-  `csc_cta_heading` varchar(150) DEFAULT NULL,
-  `csc_cta_url` varchar(255) DEFAULT NULL,
-  `csc_custom_code` varchar(50) DEFAULT NULL,
-  `csc_email_header_image` varchar(100) DEFAULT NULL,
-  `csc_email_store_url` text,
-  `footer_content` longtext,
-  `csc_email_from` varchar(100) DEFAULT NULL,
-  `csc_email_subject` varchar(100) DEFAULT NULL,
-  `csc_email_template` text,
-  `parent_item_id` bigint(32) unsigned DEFAULT NULL,
-  `app_id` int(3) DEFAULT NULL,
-  `deliverable_id` int(3) DEFAULT NULL,
-  `e_commerce_code` text,
-  `use_rolling_expiry_date` tinyint(1) DEFAULT NULL,
-  `days_rolling_expiry_date` int(11) DEFAULT NULL,
-  `unique_email_code` varchar(36) DEFAULT NULL,
-  `email_code_snippet` text,
-  `email_code_integration_type` enum('sp','et') DEFAULT NULL,
-  `email_code_content_type` enum('qr','upc','upc-a','upc-e','alpha-numeric','text') DEFAULT 'alpha-numeric',
-  `email_code_service_url` text,
-  `email_code_color` varchar(20) DEFAULT NULL,
-  `email_code_size` varchar(20) DEFAULT NULL,
-  `use_bundled_coupons` tinyint(1) DEFAULT NULL,
-  `bundled_coupon_copy` varchar(100) DEFAULT NULL,
-  `for_consultants` tinyint(1) DEFAULT NULL,
-  `deal_upon_out_of_stock` int(10) DEFAULT NULL,
-  `out_of_stock_deal` int(10) DEFAULT NULL,
-  `coupon_age_limit` int(11) DEFAULT NULL,
-  `location_specific_vouchers` enum('city','state') DEFAULT NULL,
-  `trigger_url` text,
-  PRIMARY KEY (`id`),
-  KEY `index_deal_id` (`deal_id`),
-  KEY `index_manufacturer_id` (`manufacturer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2412 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `items`
---
-
-LOCK TABLES `items` WRITE;
-/*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (2394,NULL,NULL,1147,1280,NULL,'TestCorporate Deal 1','TestCorporate Deal 1',NULL,NULL,NULL,'TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. ',NULL,NULL,NULL,NULL,'2016-07-05 15:00:00',NULL,NULL,3,100000,NULL,NULL,NULL,'TestCorporate Deal 1 - Subheading',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10000,NULL,'2016-07-05 10:02:53',NULL,NULL,0,NULL,NULL,'running',0,NULL,'TestCorporate Deal 1',2394,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'div#div-deal-background-image {\n			display: none !important\n			}\n\n			div.overlay {\n			display: none !important;\n			}\n\n			#company_logo{\n				border:0px solid red; \n				width:100%; \n				display:block;\n			}\n\n\n			.ui-btn-text{\n				color: #111;\n				width: 200px;\n				font-size: 10px;\n				margin-top: -19px;\n				margin-left: -10px;\n			}\n\n			#logoblock{\n				display:table-cell; \n				max-height:80px;\n				max-width:80px;\n				float:left; \n				vertical-align:middle;\n				background-repeat:no-repeat;\n				background-size:100%;\n				margin:8px;\n			}\n\n			#location{\n				display:table-cell; \n				height:100%;\n				width:170px;\n			}\n			/* Header */\n			.dealheader {\n				background-color: rgb(153, 138, 205);\n				color: white;\n			}\n			/* Use Now Button */\n			#btn_print_now {\n				border: 1px solid #145072;\n				color: white;\n				background: rgb(199, 199, 32);\n				background-image: -moz-linear-gradient(top, #4E89C5, #2567AB);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #5F9CC5), color-stop(1, #396B9E));\n				border-radius:10px;\n				margin-top:10px;\n			}\n\n			/* Use Now Button Hover*/\n			#btn_print_now:hover {\n				background: orange;\n			}\n\n			/* Use Now Button Text*/\n			#btn_print_now span {\n				padding: .6em 25px;\n				display: block;\n				height: 100%;\n				text-overflow: ellipsis;\n				overflow: hidden;\n				white-space: nowrap;\n				position: relative;\n			}\n\n			/* Terms Details Text */\n			p[name=\'p_instore_discount_instructions\'] {\n				font-size: 8px;\n			}\n\n			/* Terms Button */\n			.terms_button {\n				text-align: center;\n				border: 1px solid gray;\n				background: #FDFDFD;\n				border-radius:10px;\n				background-image: -moz-linear-gradient(top, #EEE, #FDFDFD);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #EEE), color-stop(1, #FDFDFD));}\n\n			.banner-row {background: rgb(209, 209, 129);}\n			.companyname {text-shadow: none;}\n			a.button.success,.button.success:active,.button.success:hover,.button.success:focus {background-color:rgb(199, 199, 32); color: white}\n			body {background:rgb(241, 241, 205);}\n			a.button.details,.button.details:active,.button.details:hover,.button.details:focus {background-color:rgb(48, 191, 57); color: white;}\n			.offerimage div {background-image: none !important;}\n			div.offerimage {background-image:url(\'http://uploads.coupsmart.com.s3.amazonaws.com/04485f294238663f767d73dfffed084d.jpg\')!important;background-position: center center;background-size:contain;background-repeat:no-repeat;height: 300px;}\n			a#change_email {color:#D60000;text-decoration:underline;}\n			div#loaded button#print {display:none !important}',NULL,NULL,'rgb(223, 97, 50)','white',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'alpha-numeric',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2395,NULL,NULL,1147,1280,NULL,'TestCorporate Deal 1','TestCorporate Deal 1',NULL,NULL,NULL,'TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. ',NULL,NULL,NULL,NULL,'2016-07-05 15:00:00',NULL,NULL,6,100000,NULL,NULL,NULL,'TestCorporate Deal 1 - Subheading',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10000,NULL,'2016-07-05 10:02:53',NULL,NULL,0,NULL,NULL,'running',0,NULL,'TestCorporate Deal 1',2395,39,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'div#div-deal-background-image {\n			display: none !important\n			}\n\n			div.overlay {\n			display: none !important;\n			}\n\n			#company_logo{\n				border:0px solid red; \n				width:100%; \n				display:block;\n			}\n\n\n			.ui-btn-text{\n				color: #111;\n				width: 200px;\n				font-size: 10px;\n				margin-top: -19px;\n				margin-left: -10px;\n			}\n\n			#logoblock{\n				display:table-cell; \n				max-height:80px;\n				max-width:80px;\n				float:left; \n				vertical-align:middle;\n				background-repeat:no-repeat;\n				background-size:100%;\n				margin:8px;\n			}\n\n			#location{\n				display:table-cell; \n				height:100%;\n				width:170px;\n			}\n			/* Header */\n			.dealheader {\n				background-color: rgb(153, 138, 205);\n				color: white;\n			}\n			/* Use Now Button */\n			#btn_print_now {\n				border: 1px solid #145072;\n				color: white;\n				background: rgb(199, 199, 32);\n				background-image: -moz-linear-gradient(top, #4E89C5, #2567AB);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #5F9CC5), color-stop(1, #396B9E));\n				border-radius:10px;\n				margin-top:10px;\n			}\n\n			/* Use Now Button Hover*/\n			#btn_print_now:hover {\n				background: orange;\n			}\n\n			/* Use Now Button Text*/\n			#btn_print_now span {\n				padding: .6em 25px;\n				display: block;\n				height: 100%;\n				text-overflow: ellipsis;\n				overflow: hidden;\n				white-space: nowrap;\n				position: relative;\n			}\n\n			/* Terms Details Text */\n			p[name=\'p_instore_discount_instructions\'] {\n				font-size: 8px;\n			}\n\n			/* Terms Button */\n			.terms_button {\n				text-align: center;\n				border: 1px solid gray;\n				background: #FDFDFD;\n				border-radius:10px;\n				background-image: -moz-linear-gradient(top, #EEE, #FDFDFD);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #EEE), color-stop(1, #FDFDFD));}\n\n			.banner-row {background: rgb(209, 209, 129);}\n			.companyname {text-shadow: none;}\n			a.button.success,.button.success:active,.button.success:hover,.button.success:focus {background-color:rgb(199, 199, 32); color: white}\n			body {background:rgb(241, 241, 205);}\n			a.button.details,.button.details:active,.button.details:hover,.button.details:focus {background-color:rgb(48, 191, 57); color: white;}\n			.offerimage div {background-image: none !important;}\n			div.offerimage {background-image:url(\'/images/uploads/s3bucket/04485f294238663f767d73dfffed084d.jpg\')!important;background-position: center center;background-size:contain;background-repeat:no-repeat;height: 300px;}\n			a#change_email {color:#D60000;text-decoration:underline;}\n			div#loaded button#print {display:none !important}',NULL,NULL,'rgb(199, 199, 32)','white','rgb(48, 191, 57)','rgb(153, 138, 205)','white','rgb(209, 209, 129)','rgb(241, 241, 205)',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'alpha-numeric',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2411,NULL,NULL,1147,1290,NULL,'Free coupon code','Get a free coupon code!',NULL,NULL,NULL,'Just hit the Get Code button and view your code! Just hit the Get Code button and view your code! Just hit the Get Code button and view your code!',NULL,NULL,NULL,NULL,'2017-12-13 14:21:43',NULL,NULL,12,100,NULL,NULL,NULL,'Get your very own free coupon code now!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10000,NULL,'2017-12-13 09:21:43',NULL,NULL,6,NULL,NULL,'running',0,NULL,'Get your free Code - Report',2411,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,NULL,'Test Corporate','Here\'s your free coupon code!','2b9ef43ea92a1ae43cb9db029c5c3375.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'div#div-deal-background-image {\n			display: none !important\n			}\n\n			div.overlay {\n			display: none !important;\n			}\n\n			#company_logo{\n				border:0px solid red; \n				width:100%; \n				display:block;\n			}\n\n\n			.ui-btn-text{\n				color: #111;\n				width: 200px;\n				font-size: 10px;\n				margin-top: -19px;\n				margin-left: -10px;\n			}\n\n			#logoblock{\n				display:table-cell; \n				max-height:80px;\n				max-width:80px;\n				float:left; \n				vertical-align:middle;\n				background-repeat:no-repeat;\n				background-size:100%;\n				margin:8px;\n			}\n\n			#location{\n				display:table-cell; \n				height:100%;\n				width:170px;\n			}\n			/* Header */\n			.dealheader {\n				background-color: rgb(56, 97, 173);\n				color: white;\n			}\n			/* Use Now Button */\n			#btn_print_now {\n				border: 1px solid #145072;\n				color: white;\n				background: rgb(197, 73, 114);\n				background-image: -moz-linear-gradient(top, #4E89C5, #2567AB);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #5F9CC5), color-stop(1, #396B9E));\n				border-radius:10px;\n				margin-top:10px;\n			}\n\n			/* Use Now Button Hover*/\n			#btn_print_now:hover {\n				background: orange;\n			}\n\n			/* Use Now Button Text*/\n			#btn_print_now span {\n				padding: .6em 25px;\n				display: block;\n				height: 100%;\n				text-overflow: ellipsis;\n				overflow: hidden;\n				white-space: nowrap;\n				position: relative;\n			}\n\n			/* Terms Details Text */\n			p[name=\'p_instore_discount_instructions\'] {\n				font-size: 8px;\n			}\n\n			/* Terms Button */\n			.terms_button {\n				text-align: center;\n				border: 1px solid gray;\n				background: #FDFDFD;\n				border-radius:10px;\n				background-image: -moz-linear-gradient(top, #EEE, #FDFDFD);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #EEE), color-stop(1, #FDFDFD));}\n\n			.banner-row {background: rgb(154, 164, 237);}\n			.companyname {text-shadow: none;}\n			a.button.success,.button.success:active,.button.success:hover,.button.success:focus {background-color:rgb(197, 73, 114); color: white}\n			body {background:rgb(206, 209, 233);}\n			a.button.details,.button.details:active,.button.details:hover,.button.details:focus {background-color:rgb(197, 73, 114); color: white;}\n			.offerimage div {background-image: none !important;}\n			div.offerimage {background-image:url(\'/images/uploads/s3bucket/31b9477b2f8c4c7eec37a5e7b285dc07.jpg\')!important;background-position: center center;background-size:contain;background-repeat:no-repeat;height: 300px;}\n			a#change_email {color:#D60000;text-decoration:underline;}\n			div#loaded button#print {display:none !important}',NULL,NULL,'rgb(197, 73, 114)','white','rgb(197, 73, 114)','rgb(56, 97, 173)','white','rgb(154, 164, 237)','rgb(206, 209, 233)',NULL,0,'<div style=\"position:relative;top:100px;height:600px;\">\n	<img src=\"/images/uploads/s3bucket/960761819d4c27cd6fb5973b45963b42.jpg\" alt=\"\" style=\"z-index: -1\"/>\n	<h2 style=\"position: absolute; top: 235px; left: 10px; font-size: 25px; color: black; background-color:white;border: 1px solid black; padding: 5px; font-weight: normal;\">A882645-43</h2>\n</div>','<div style=\"position:relative;top:100px;height:600px;\">\n	<img src=\"http://uploads.coupsmart.com.s3.amazonaws.com/960761819d4c27cd6fb5973b45963b42.jpg\" alt=\"\" style=\"z-index: -1\"/>\n	<h2 style=\"position: absolute; top: 235px; left: 10px; font-size: 25px; color: black; background-color:white;border: 1px solid black; padding: 5px; font-weight: normal;\">A882645-43</h2>\n</div>',NULL,NULL,'A882645-43',NULL,NULL,NULL,NULL,NULL,'csc_email_template_with_claim_URL',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'alpha-numeric',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `campaigns`
---
-
-DROP TABLE IF EXISTS `campaigns`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `campaigns` (
+CREATE TABLE `email_templates` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
-  `total_methods` int(10) unsigned DEFAULT NULL,
-  `allow_overage` bit(1) DEFAULT NULL,
-  `logo_file_name` varchar(255) DEFAULT NULL,
-  `logo_preview_file_name` varchar(255) DEFAULT NULL,
-  `product_selling_options` enum('mine','other','','both') DEFAULT NULL,
-  `other_business_options` enum('nolist','','list') DEFAULT NULL,
-  `use_product_barcode` enum('Y','','N') DEFAULT NULL,
-  `use_coupon_barcode` enum('Y','','N') DEFAULT NULL,
-  `use_offer_code` enum('Y','','N') DEFAULT NULL,
-  `use_share_bonus` enum('Y','','N') DEFAULT NULL,
-  `campaign_email_80` tinyint(4) DEFAULT NULL,
-  `campaign_email_90` tinyint(4) DEFAULT NULL,
-  `campaign_email_full` tinyint(4) DEFAULT NULL,
-  `auto_renew` tinyint(1) unsigned DEFAULT '0',
-  `num_auto_renewals` int(10) DEFAULT '0',
-  `num_renewals_performed` int(10) DEFAULT '0',
-  `birthday_coupon_image` varchar(100) DEFAULT NULL,
-  `birthday_coupon_text` varchar(255) DEFAULT NULL,
-  `birthday_coupon_num_days_weeks_months` int(10) unsigned DEFAULT NULL,
-  `birthday_coupon_day_week_month` enum('day','week','month') DEFAULT NULL,
-  `disable_expire` tinyint(1) unsigned DEFAULT '0',
-  `status` enum('pending','running','finished','stopped','paused','deleted') DEFAULT NULL,
-  `stats_campaign` longtext,
-  `stats_social` longtext,
-  `stats_user` longtext,
-  `voucher_layout_id` int(16) DEFAULT '1',
-  `img_voucher_background` varchar(255) DEFAULT NULL,
-  `email_layout_id` int(10) unsigned DEFAULT '1',
-  `email_file` varchar(255) DEFAULT NULL,
-  `convercial_type` enum('location','product') DEFAULT NULL,
-  `is_featured` tinyint(1) DEFAULT '0',
-  `canvas_feature` tinyint(1) DEFAULT NULL,
-  `featured_image` varchar(255) DEFAULT NULL,
-  `sidebar_image` varchar(255) DEFAULT NULL,
-  `turn_on_deal_when` enum('now','specific_time') DEFAULT NULL,
-  `turn_off_deal_when` enum('runs_out','specific_time','auto_renew','never') DEFAULT NULL,
-  `expire_when` enum('turns_off','specific_time','never') DEFAULT NULL,
-  `use_deal_voucher_image` enum('yes_own','yes_fb_photo','yes_company_logo','no') DEFAULT NULL,
-  `use_preview_deal_voucher_image` enum('yes_own','yes_fb_photo','yes_company_logo','no','voucher_img') DEFAULT NULL,
-  `auto_post` tinyint(4) DEFAULT NULL,
-  `post_text` varchar(255) DEFAULT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `require_like` tinyint(3) unsigned DEFAULT '0',
-  `require_info` tinyint(1) DEFAULT '0',
-  `require_share` tinyint(1) DEFAULT '0',
-  `hide_share_button` tinyint(1) DEFAULT NULL,
-  `img_fan_deals` varchar(255) DEFAULT NULL,
-  `img_instore_deals` varchar(255) DEFAULT NULL,
-  `img_sharing` varchar(255) DEFAULT NULL,
-  `img_placeholder` varchar(255) DEFAULT NULL,
-  `csc_report_recipients` text,
-  `img_expired_used_up` varchar(255) DEFAULT NULL,
-  `add_likebar` tinyint(1) DEFAULT NULL,
-  `img_likebar` varchar(255) DEFAULT NULL,
-  `likebar_content` text,
+  `template` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `description` text,
+  `days_to_send` int(10) DEFAULT NULL,
+  `group` enum('free_active','free_inactive','paying','added_convercial','all','campaign_finished') DEFAULT NULL,
+  `exempt` tinyint(1) DEFAULT '0',
+  `reason_receiving_email` text,
+  `defaults` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2412 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `campaigns`
+-- Dumping data for table `email_templates`
 --
 
-LOCK TABLES `campaigns` WRITE;
-/*!40000 ALTER TABLE `campaigns` DISABLE KEYS */;
-INSERT INTO `campaigns` VALUES (2394,'TestCorporate Deal 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,0,'running',NULL,NULL,NULL,210,'f5501873a0e5a70399eee5f7cdf24605.jpg',1,NULL,NULL,1,NULL,'a4d624581253d06b4f1cc452d508888f.jpg',NULL,NULL,NULL,NULL,NULL,'yes_own',NULL,NULL,'2016-07-05 10:02:53',0,0,0,0,'a4d624581253d06b4f1cc452d508888f.jpg',NULL,NULL,NULL,NULL,NULL,0,NULL,NULL),(2395,'TestCorporate Deal 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,0,'running',NULL,NULL,NULL,209,'f5501873a0e5a70399eee5f7cdf24605.jpg',1,NULL,NULL,0,NULL,'04485f294238663f767d73dfffed084d.jpg',NULL,NULL,NULL,NULL,NULL,'yes_own',NULL,NULL,'2016-07-05 10:02:53',0,0,0,0,'04485f294238663f767d73dfffed084d.jpg',NULL,NULL,NULL,NULL,NULL,0,NULL,NULL),(2411,'Get your free Code - Report',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,0,'running',NULL,NULL,NULL,1,'960761819d4c27cd6fb5973b45963b42.jpg',1,NULL,NULL,0,NULL,'31b9477b2f8c4c7eec37a5e7b285dc07.jpg',NULL,NULL,NULL,NULL,NULL,'yes_own',NULL,NULL,'2017-12-13 09:21:43',0,0,0,0,'31b9477b2f8c4c7eec37a5e7b285dc07.jpg',NULL,NULL,'5b0e118a3d7520cdd777a603ba921f63.jpg',NULL,NULL,0,NULL,NULL);
-/*!40000 ALTER TABLE `campaigns` ENABLE KEYS */;
+LOCK TABLES `email_templates` WRITE;
+/*!40000 ALTER TABLE `email_templates` DISABLE KEYS */;
+INSERT INTO `email_templates` VALUES (1,'customer_free_w1.html','CoupSmart Tips For Your Campaign','Free Customer, Active, Week 1',3,'free_active',0,NULL,NULL),(2,'customer_free_w2.html','An offer you can’t refuse','Free Customer, Active, Week 2',10,'free_active',0,NULL,NULL),(3,'customer_free_w3.html','CoupSmart Tips For Your Campaign','Free Customer, Active, Week 3',17,'free_active',0,NULL,NULL),(4,'customer_free_w4.html','Did you miss the email I sent you?','Free Customer, Active, Week 4',24,'free_active',0,NULL,NULL),(5,'customer_free_w5.html','Do you need more tips?','Free Customer, Active, Week 5',31,'free_active',0,NULL,NULL),(6,'customer_free_inactive_w1.html','Checking In','Free Customer,  Inactive, Week 1',7,'free_inactive',0,NULL,NULL),(7,'customer_free_inactive_w2.html','Need help getting started?','Free Customer,  Inactive, Week 2',14,'free_inactive',0,NULL,NULL),(8,'customer_free_inactive_w3.html','Where have you been?','Free Customer,  Inactive, Week 3',21,'free_inactive',0,NULL,NULL),(9,'customer_free_inactive_w4.html','What are you waiting for?','Free Customer,  Inactive, Week 4',28,'free_inactive',0,NULL,NULL),(10,'customer_upgrade_birthday.html','Do you want a birthday present?','Paying Customer, Day 14',14,'paying',0,NULL,NULL),(11,'customer_upgrade_convercial.html','Why don\'t your customers Like you?','Paying Customer, Day 28',28,'paying',0,NULL,NULL),(12,'customer_upgrade_webcoupons.html','Q. How do you get more customers from your website?','Paying Customer, Day 42',42,'paying',0,NULL,NULL),(13,'customer_upgrade_training.html','All You Need to Know About Convercial','Paying Customer, Added Convercial',NULL,'added_convercial',0,NULL,NULL),(14,'customer_notice_comingsoon.html','Your campaign starts in a week','All Customers',NULL,'all',0,NULL,NULL),(15,'customer_notice_itemshipped.html','Your Items Have Been Shipped','All Customers',NULL,'all',1,NULL,NULL),(16,'customer_notice_paid.html','','All Customers',NULL,'all',0,NULL,NULL),(17,'customer_notice_newaccount.html','Welcome to CoupSmart!','All Customers, New',NULL,'all',0,NULL,NULL),(18,'customer_notice_successfulcamp.html','Congratulations on your successful campaign!','All Customers, Campaign Finished',NULL,'all',0,NULL,NULL),(19,'customer_notice_lowecamp.html','Your campaign is completed!','All Customers, Campaign Finished Poor (engagement rate)',NULL,'all',0,NULL,NULL),(20,'customer_notice_lowccamp.html','Your campaign is completed!','All Customers, Campaign Finished Poor (conversion rate)',NULL,'all',0,NULL,NULL),(21,'customer_notice_stats.html','(TBD)','',NULL,'all',0,NULL,NULL),(22,'customer_engagement_energy.html','An energy boost from CoupSmart (TBD)','All Customers, New, 3 hours',NULL,'all',0,NULL,NULL),(23,'customer_upgrade_freetraining.html','All You Need to Know About Convercial','Free Customer, Added Convercial',NULL,'added_convercial',0,NULL,NULL),(24,'social_gift_receipt.html','Your Social Gift Shop Receipt','Buyer payment receipt',NULL,'all',0,'You received this email because you purchased an item in our Facebook Gift Shop, this email is just to confirm your purchase. If you did not make a purchase, or believe this email is in error, let us know by emailing our <a href=\"mailto:support@coupsmart.com\">Support Team</a>.\n',NULL),(25,'social_gift_company_receipt.html','Social Gift Shop Purchase','Company being informed of SGS purchase',NULL,'all',0,NULL,NULL),(26,'social_gift.html','Somebody sent you a gift','Email to recipient (Email subject varies depending of gift)',NULL,'all',0,NULL,NULL),(27,'social_gift_redeemed.html','Your friend has redeemed your gift','Email sent to buyer of gift after offer redemption',NULL,'all',0,NULL,NULL),(28,'social_gift_confirmation.html','Your gift has been sent','Email sent to buyer after FB post and/or email',NULL,'all',0,NULL,NULL),(29,'social_gift_company_ship_order_email.html','Social Gift Shipment Order','Email sent to company when an order is placed to be shipped out.',NULL,'all',0,NULL,NULL),(30,'social_gift_anonymous_ship_email.html','You Have A Gift On The Way!','Email sent to recipient of anonymous gift in gift store',NULL,'all',0,NULL,NULL),(31,'social_gift_order_updated_email.html','An Order Has Been Updated','Email to send to companies when a shipping order has been updated',NULL,'all',0,NULL,NULL),(32,'smartgift0313_receipt.html','Your Social Gift Shop Receipt','The SGS Receipt sent to the buyer when purchasing a new Order.',NULL,NULL,1,'You received this email because you purchased an item in our Facebook Gift Shop, this email is just to confirm your purchase. If you did not make a purchase, or believe this email is in error, let us know by emailing our Support Team: support@coupsmart.com','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/csSGS_emailheader.jpg\",\"unsubscribeLink\":\"http://coupsmart.com/unsubscribe\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our <a href=\'mailto:support@coupsmart.com\'>Support Team</a>\"}'),(33,'smartgift0313_notifyOrderNew.html','You have a new Order','The Order Details sent to the company when a new Order has been placed from the SGS Gift Shop.',NULL,NULL,1,'You received this email because someone made a purchase from the Gift Shop on Facebook App on your Facebook Page, this email is informing you of the order details. If you do not have a Gift Shop on Facebook App, or believe this email is in error, let us know by emailing our Support Team: support@coupsmart.com','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/csSGS_emailheader.jpg\",\"clientCustomText\":\"Visit our shop at the Facebook Page\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our Support Team\",\"unsubscribe_link\":\"http://coupsmart.com/unsubscribe\"}'),(34,'smartgift0313_recipientNotification.html','You have received a new Gift!','A notification sent to the recipient when they are sent a gift via the Anonymous/Email option selected from the SGS Gift Shop.',NULL,NULL,1,'You received this email because someone purchased an item for you in our Facebook Gift Shop, this email is just to notify you that you have a gift waiting for you on Facebook. If you believe this email is in error, let us know by emailing our Support Team: support@coupsmart.com',NULL),(35,'smartgift0313_shippingAddressNeeded.html','There was a problem with the gift you sent','An email reminder sent to the buyer if the recipient address has not been provided when physcially mailing them the gift.',NULL,NULL,1,'You received this email because you purchased an item in our Facebook Gift Shop, this email is alerting you that there is a problem fulfilling your order completely. If you did not make a purchase, or believe this email is in error, let us know by emailing our Support Team: support@coupsmart.com',NULL),(36,'instore_savelater2.html','Here\'s Your Fan-Only Coupon!','An email sent to the user via the instore UI if they click \"Email to Use Later\" button.',NULL,NULL,0,NULL,NULL),(37,'send_payment_request.html','Coupsmart Payment Request','An email sent to the client requesting payment.',NULL,NULL,0,NULL,NULL),(39,'payment_confirmation.html','Coupsmart Payment Confirmed','An confirmation email sent to the sales person when a payment is made.',NULL,NULL,0,NULL,NULL),(40,'mobileoffers_0513.html','Here is Your Fan-Only Coupon!',NULL,NULL,NULL,0,'You received this email because you claimed a Facebook fan-only offer and elected to have it emailed to this address. This email contains the link to print out your deal voucher. If you did not claim a deal, or believe this email is in error, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/emailbasic_header_black.jpg\",\"clientCustomText\":\"Visit our shop at the Facebook Page\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our Support Team\",\"unsubscribe_link\":\"http://coupsmart.com/unsubscribe\"}'),(41,'target_email_layout1.html','','Smart Email Layout 1',NULL,'all',0,NULL,NULL),(42,'target_email_layout2.html','','Smart Email Layout 2',NULL,'all',0,NULL,NULL),(43,'target_email_layout3.html','','Smart Email Layout 3',NULL,'all',0,NULL,NULL),(44,'mobileoffers_0513.html','Here is a link to the deal you claimed earlier',NULL,NULL,NULL,0,'You received this email because you claimed a Facebook fan-only offer and elected to have it emailed to this address. This email contains the link to print out your deal voucher. If you did not claim a deal, or believe this email is in error, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/emailbasic_header_black.jpg\",\"clientCustomText\":\"Visit our shop at the Facebook Page\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our Support Team\",\"unsubscribe_link\":\"http://coupsmart.com/unsubscribe\"}'),(45,'company_renewtoken.html','URGENT: Facebook Token Needed','Request customer to renew their access token for Facebook',NULL,'all',1,NULL,NULL),(46,'smartgift0313_notifyOrderUpdatedAddress.html','Updated Order Information','An email notification sent to the clients when the recipient address has been entered.',NULL,NULL,0,'You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone has added new information you an order they have made before on the app. If you believe this email is in error, let us know by emailing our <a href=\"mailto:support@coupsmart.com\">Support Team</a>.',NULL),(47,'fb_notify_reminder.html','Facebook Notification Reminder','An email reminder sent to the buyer if they have not sent an FB Notification to the recipient after the purchase.',NULL,NULL,0,'You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to remind you that you need to send one or more Facebook Notifications to recipients whom you sent SGS gifts. If you believe this email is in error, let us know by emailing our <a href=\"mailto:support@coupsmart.com\">Support Team</a>.',NULL),(48,'smartgift0313_notifyPurchaserOrderUpdatedAddress.html','Updated Order Information','An email notification sent to the buyer when the recipient address has been entered.',NULL,NULL,0,'You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone has added new information you an order they have made before on the app. If you believe this email is in error, let us know by emailing our <a href=\"mailto:support@coupsmart.com\">Support Team</a>.',NULL),(100,'smart_email_lindt2.html','Holiday Treats on Sale Now at the Ghirardelli Gift Shop','An email sent to the lindt users containing a URL for visiting the SGS App Store.',NULL,NULL,0,NULL,NULL),(101,'smartgift0313_notifyPurchaserOfClientsAction.html','Your Order Cancellation Request Has Been Acknowledged','An email notification sent to the purchaser when the company acknowledges an order cancellation and takes action.',NULL,NULL,0,'You have received this email because {$compName} has accepted your cancellation of an order through your Facebook Smart Gifts Store. If you have questions or concerns, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.',NULL),(103,'csc_mobile_offers.html','Here is a link to the deal you claimed earlier',NULL,NULL,NULL,0,'You received this email because you claimed a Facebook fan-only offer and elected to have it emailed to this address. This email contains the link to print out your deal voucher. If you did not claim a deal, or believe this email is in error, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/emailbasic_header_black.jpg\",\"clientCustomText\":\"Visit our shop at the Facebook Page\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our Support Team\",\"unsubscribe_link\":\"http://coupsmart.com/unsubscribe\"}'),(102,'csc_mobile_offers.html','Here is Your Fan-Only Coupon!',NULL,NULL,NULL,0,'You received this email because you claimed a Facebook fan-only offer and elected to have it emailed to this address. This email contains the link to print out your deal voucher. If you did not claim a deal, or believe this email is in error, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.','{\"emailHeaderImage\":\"https://s3.amazonaws.com/siteimg.coupsmart.com/email/emailbasic_header_black.jpg\",\"clientCustomText\":\"Visit our shop at the Facebook Page\",\"receiveMessage\":\"You received this email because you currently have our Gift Shop App installed on your Facebook Page. This email is to inform you that someone made a purchase using the app. If you believe this email is in error, let us know by emailing our Support Team\",\"unsubscribe_link\":\"http://coupsmart.com/unsubscribe\"}'),(49,'smart_email_lindt.html','Our Favorite Gifts of the Season at the Ghirardelli Chocolate Gift Shop','An email sent to the lindt users containing a URL for visiting the SGS App Store.',NULL,NULL,0,NULL,NULL),(50,'smart_email_lindt.html','Our Favorite Gifts of the Season at the Ghirardelli Chocolate Gift Shop','An email sent to the lindt users containing a URL for visiting the SGS App Store.',NULL,NULL,0,NULL,NULL),(96,'smartgift0313_notifyClientOfCancellation.html','You Have Requested An Order Cancellation','An email notification sent to the client when they request an order cancellation.',NULL,NULL,0,'You have received this email because you have requested a cancellation of an order through Facebook Smart Gifts Store. If you have questions or concerns, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.',NULL),(97,'smartgift0313_notifyPurchaserOfCancellation.html','You Have An Order Cancellation Request','An email notification sent to the company when the recipient requests an order cancellation.',NULL,NULL,0,'You have received this email because a customer has requested a cancellation of an order through your Facebook Smart Gifts Store. If you have questions or concerns, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.',NULL),(98,'smartgift0313_notifyUserOrderNotCancelled.html','Your Order Cancellation Request Has Been Denied','An email notification sent to the purchaser when the company denies an order cancellation.',NULL,NULL,0,'You have received this email because {$compName} has denied your cancellation of an order through your Facebook Smart Gifts Store. If you have questions or concerns, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.',NULL),(99,'smartgift0313_notifyUserOrderCancelled.html','Your Order Cancellation Request Has Been Approved','An email notification sent to the purchaser when the company accepts an order cancellation.',NULL,NULL,0,'You have received this email because {$compName} has accepted your cancellation of an order through your Facebook Smart Gifts Store. If you have questions or concerns, let us know by reporting it to our <a href=\"http://support.coupsmart.com\">Support Center</a> or by emailing us at support@coupsmart.com.',NULL),(104,'notify_coupon_printed.html','Please Share and Show You Care','An email notification sent to the user when they print a coupon.',NULL,NULL,0,'You have received this email because you have just printed a coupon via Coupsmart',NULL),(105,'donationReceipt.html','Thank you for your Donation!','Email that gets sent when a donation is made',NULL,NULL,0,NULL,NULL),(106,'csc_email_template.html','Here\'s your coupon code','Email that gets sent when a coupon code gets claimed.',NULL,NULL,0,NULL,NULL),(107,'client_bug_report.html','Client Bug Report!','Email that gets sent when a Bug Report is submitted by the Client.',NULL,NULL,0,NULL,NULL),(108,'cc-billing-signup.html','CoupSmart Sign Up Successful!','Email that gets sent when a user signs up for Self Service.',NULL,NULL,0,NULL,NULL),(109,'cc-payment-successful.html','Billing Payment successful!','Email that gets sent when a billing payment is successfully performed using the automated script.',NULL,NULL,0,NULL,NULL),(110,'cc-payment-failed.html','Billing Payment failed!','Email that gets sent when a billing payment fails for some reason.',NULL,NULL,0,NULL,NULL),(111,'cc-payment-reminder.html','Reminder - Your yearly license will expire soon!','Email that gets sent when a billing yearly license is about to expire in a few given days.',NULL,NULL,0,NULL,NULL),(112,'csc_email_template_with_claim_URL.html','Here\'s your coupon code','Email that gets sent when a coupon code gets claimed.',NULL,NULL,0,NULL,NULL),(113,'mc_demo_request_email.html','Demo Request Email','',NULL,NULL,0,NULL,NULL),(114,'client-setup-confirmation.html','NEW COUPSMART ACCOUNT NOTIFICATION | Please Complete!','A confirmation email that gets sent to the client when they are setup from the admin->client setup page',NULL,NULL,0,NULL,NULL),(115,'client-credit-card-setup.html','THANK YOU | Notification of Payment Set Up','NOTIFICATION OF Credit Card SETUP',NULL,NULL,0,NULL,NULL),(116,'client-invoice-setup.html','THANK YOU | Notification of Payment Set Up','NOTIFICATION OF INVOICE SETUP',NULL,NULL,0,NULL,NULL),(117,'client-billing-contact-setup.html','THANK YOU | Notification of New Billing Contact','NOTIFICATION OF NEW ACCOUNT REPRESENTATIVE (BILLING CONTACT)',NULL,NULL,0,NULL,NULL),(118,'client-payment-notification.html','THANK YOU | Notification of Payment Received','NOTIFICATION OF PAYMENT RECEIVED',NULL,NULL,0,NULL,NULL),(119,'client-invoice.html','Your Invoice','CLIENT INVOICE',NULL,NULL,0,NULL,NULL),(120,'user-setup-confirmation.html','NEW USER ACCOUNT NOTIFICATION | Please Complete!','A confirmation email that gets sent to the user when they are setup from the admin->client setup page',NULL,NULL,0,NULL,NULL),(121,'daily-campaign-report.html','Coupsmart Daily Campaign Report','Coupsmart Daily Campaign Report',NULL,NULL,0,NULL,NULL),(122,'weekly-campaign-report.html','Coupsmart Weekly Campaign Report','Coupsmart Weekly Campaign Report',NULL,NULL,0,NULL,NULL);
+/*!40000 ALTER TABLE `email_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -258,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-14 10:46:27
+-- Dump completed on 2017-12-14 14:32:55
