@@ -63,7 +63,7 @@ CREATE TABLE `blocked_app_users` (
   `automatically_banned` tinyint(1) DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `cache_images` (
   `resized_image` varchar(50) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,7 @@ CREATE TABLE `campaigns` (
   `img_likebar` varchar(255) DEFAULT NULL,
   `likebar_content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2396 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `campaigns_locations` (
   `locations_id` int(10) unsigned NOT NULL,
   `is_backup_deal` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +256,7 @@ CREATE TABLE `claim_attempts` (
   `distributor_id` varchar(50) DEFAULT NULL,
   `shared_referral_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=245 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -489,7 +489,7 @@ CREATE TABLE `companies` (
   `email_another_invoice` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_demo` (`demo`)
-) ENGINE=InnoDB AUTO_INCREMENT=1148 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +556,7 @@ CREATE TABLE `customer_supplied_code` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `index_deal_id` (`deal_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=501000 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -585,7 +585,7 @@ CREATE TABLE `deals` (
   `status` enum('pending','running','finished','stopped','paused','deleted') DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1281 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -616,7 +616,7 @@ CREATE TABLE `email_templates` (
   `reason_receiving_email` text,
   `defaults` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -644,7 +644,7 @@ CREATE TABLE `error_log` (
   `description` text,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -676,7 +676,7 @@ CREATE TABLE `fb_access_tokens` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7942 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -708,7 +708,7 @@ CREATE TABLE `fb_likes` (
   KEY `index_fb_id` (`fb_id`),
   KEY `index_fb_likes` (`like_count`),
   KEY `index_category` (`category`)
-) ENGINE=MyISAM AUTO_INCREMENT=1356107 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -888,7 +888,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`id`),
   KEY `index_deal_id` (`deal_id`),
   KEY `index_manufacturer_id` (`manufacturer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2396 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -936,7 +936,7 @@ CREATE TABLE `items_views` (
   KEY `index_company_id` (`company_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_shortened_url_hit_id` (`shortened_url_hit_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1837237 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1017,7 +1017,7 @@ CREATE TABLE `locations` (
   `modified` datetime DEFAULT NULL,
   `can_spam_address` tinyint(1) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=282 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1084,7 +1084,7 @@ CREATE TABLE `user_fb_likes` (
   KEY `index_fb_category` (`fb_category`),
   KEY `index_fb_like` (`fb_like`),
   KEY `index_company_id` (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8172228 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1219,7 +1219,7 @@ CREATE TABLE `users` (
   KEY `index_date_of_birth` (`date_of_birth`),
   KEY `index_facebook_location_id` (`facebook_location_id`),
   KEY `index_gender` (`gender`)
-) ENGINE=InnoDB AUTO_INCREMENT=459327 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1244,7 +1244,7 @@ CREATE TABLE `users_companies` (
   `users_id` bigint(20) unsigned DEFAULT NULL,
   `companies_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1164 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1269,7 +1269,7 @@ CREATE TABLE `users_companies_campaigns` (
   `companies_id` int(10) unsigned NOT NULL,
   `campaigns_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4455 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1310,7 +1310,7 @@ CREATE TABLE `voucher_layout_parts` (
   `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_voucher_layout_id` (`voucher_layout_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1611 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1341,7 +1341,7 @@ CREATE TABLE `voucher_layouts` (
   `bg_color` varchar(16) DEFAULT NULL,
   `voucher_type` enum('coupon','sgs') DEFAULT 'coupon',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=211 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1391,7 +1391,7 @@ CREATE TABLE `users_notifications` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 drop table if exists `smart_link_clicks`;
 CREATE TABLE `smart_link_clicks` (
@@ -1414,7 +1414,7 @@ CREATE TABLE `unsubscribed_emails` (
   `company_id` int(11) unsigned DEFAULT NULL,
   `type` enum('none','user','company') DEFAULT 'none',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into items values (2394,NULL,NULL,1147,1280,NULL,'TestCorporate Deal 1','TestCorporate Deal 1',NULL,NULL,NULL,'TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. TestCorporate Deal 1 - Details. ',NULL,NULL,NULL,NULL,'2016-07-05 15:00:00',NULL,NULL,3,100000,NULL,NULL,NULL,'TestCorporate Deal 1 - Subheading',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10000,NULL,'2016-07-05 10:02:53',NULL,NULL,0,NULL,NULL,'running',0,NULL,'TestCorporate Deal 1',2394,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'div#div-deal-background-image {\n			display: none !important\n			}\n\n			div.overlay {\n			display: none !important;\n			}\n\n			#company_logo{\n				border:0px solid red; \n				width:100%; \n				display:block;\n			}\n\n\n			.ui-btn-text{\n				color: #111;\n				width: 200px;\n				font-size: 10px;\n				margin-top: -19px;\n				margin-left: -10px;\n			}\n\n			#logoblock{\n				display:table-cell; \n				max-height:80px;\n				max-width:80px;\n				float:left; \n				vertical-align:middle;\n				background-repeat:no-repeat;\n				background-size:100%;\n				margin:8px;\n			}\n\n			#location{\n				display:table-cell; \n				height:100%;\n				width:170px;\n			}\n			/* Header */\n			.dealheader {\n				background-color: rgb(153, 138, 205);\n				color: white;\n			}\n			/* Use Now Button */\n			#btn_print_now {\n				border: 1px solid #145072;\n				color: white;\n				background: rgb(199, 199, 32);\n				background-image: -moz-linear-gradient(top, #4E89C5, #2567AB);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #5F9CC5), color-stop(1, #396B9E));\n				border-radius:10px;\n				margin-top:10px;\n			}\n\n			/* Use Now Button Hover*/\n			#btn_print_now:hover {\n				background: orange;\n			}\n\n			/* Use Now Button Text*/\n			#btn_print_now span {\n				padding: .6em 25px;\n				display: block;\n				height: 100%;\n				text-overflow: ellipsis;\n				overflow: hidden;\n				white-space: nowrap;\n				position: relative;\n			}\n\n			/* Terms Details Text */\n			p[name=\'p_instore_discount_instructions\'] {\n				font-size: 8px;\n			}\n\n			/* Terms Button */\n			.terms_button {\n				text-align: center;\n				border: 1px solid gray;\n				background: #FDFDFD;\n				border-radius:10px;\n				background-image: -moz-linear-gradient(top, #EEE, #FDFDFD);\n				background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #EEE), color-stop(1, #FDFDFD));}\n\n			.banner-row {background: rgb(209, 209, 129);}\n			.companyname {text-shadow: none;}\n			a.button.success,.button.success:active,.button.success:hover,.button.success:focus {background-color:rgb(199, 199, 32); color: white}\n			body {background:rgb(241, 241, 205);}\n			a.button.details,.button.details:active,.button.details:hover,.button.details:focus {background-color:rgb(48, 191, 57); color: white;}\n			.offerimage div {background-image: none !important;}\n			div.offerimage {background-image:url(\'http://uploads.coupsmart.com.s3.amazonaws.com/04485f294238663f767d73dfffed084d.jpg\')!important;background-position: center center;background-size:contain;background-repeat:no-repeat;height: 300px;}\n			a#change_email {color:#D60000;text-decoration:underline;}\n			div#loaded button#print {display:none !important}',NULL,NULL,'rgb(223, 97, 50)','white',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'alpha-numeric',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
@@ -1434,7 +1434,7 @@ CREATE TABLE `sgs_discounts` (
   `allowed_uses` int(11) DEFAULT NULL,
   `conditions` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 update campaigns set voucher_layout_id = 209 where id = 2394;
 
@@ -1462,7 +1462,7 @@ CREATE TABLE `user_emails` (
   KEY `emailIdx` (`email`),
   KEY `userIdIdx` (`user_id`),
   KEY `email_templateIdx` (`email_template`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=605500 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 drop table if exists `user_email_links`;
@@ -1474,7 +1474,7 @@ CREATE TABLE `user_email_links` (
   `email_link_code` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_email_code_idx` (`user_email_code`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=1460295 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 drop table if exists `user_email_clicks`;
@@ -1489,7 +1489,7 @@ CREATE TABLE `user_email_clicks` (
   `email_click_code` varchar(36) DEFAULT NULL,
   `page_loaded` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 drop table if exists `user_emails_opened`;
@@ -1498,7 +1498,7 @@ CREATE TABLE `user_emails_opened` (
   `user_email_id` int(11) unsigned DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 drop table if exists `email_template_override`;
@@ -1509,7 +1509,7 @@ CREATE TABLE `email_template_override` (
   `template` varchar(255) DEFAULT NULL,
   `content` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 drop table if exists `user_company_unsubscribe`;
@@ -1519,5 +1519,29 @@ CREATE TABLE `user_company_unsubscribe` (
   `company_id` int(11) unsigned NOT NULL,
   `time_unsubscribed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+drop table if exists `referrals`;
+CREATE TABLE `referrals` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `source_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `request_id` varchar(100) DEFAULT NULL,
+  `sender_id` varchar(100) DEFAULT NULL,
+  `receipient_id` varchar(100) DEFAULT NULL,
+  `status` enum('pending','accepted','received') DEFAULT NULL,
+  `item_shared` int(11) DEFAULT NULL,
+  `item_claimed` int(11) DEFAULT NULL,
+  `image_shared` int(11) unsigned DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `share_method` enum('own_wall','friend_wall','request','own_group','own_page','private_message','countmein','') DEFAULT NULL,
+  `parent_id` int(11) DEFAULT '0',
+  `level` int(10) DEFAULT '0',
+  `company_id` bigint(20) DEFAULT NULL,
+  `share_msg` varchar(255) DEFAULT NULL,
+  `app_name` enum('smart_deals','sgs','convercial','sdw') DEFAULT NULL,
+  `url_shared` text,
+  `referral_code` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_created` (`created`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

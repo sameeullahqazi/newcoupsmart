@@ -225,6 +225,14 @@ class User extends BasicDataObject
 
 	}
 	
+	public static function findUserByFacebookId($fb_id)
+	{
+		$user = new User();
+		if(!empty($fb_id))
+			$user->Select("facebook_id = '" . Database::mysqli_real_escape_string($fb_id) . "'");
+		return $user;
+	}
+	
 	public static function findByFacebookId($fb_id)
 	{
 		$user = false;

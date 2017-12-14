@@ -52,7 +52,7 @@
 		public static function get_resized_image_from_cache_dynamo_db($original_image, $width, $height, $bucket_name = "uploads.coupsmart.com")
 		{
 			global $upload_bucket;
-			$resized_image = "resized_$width_$height_$original_image";
+			$resized_image = "resized_" . $width . "_" . $height . "_" . $original_image;
 			
 			$file_header_content = Common::get_header_content(dirname(__DIR__) . '/' . $upload_bucket . "/" . $resized_image);
 						//error_log("file_header_content in get_resized_image_from_cache(): ".var_export($file_header_content, true));
@@ -112,10 +112,10 @@
 						$resized_dimensions = Common::scaleProportional($image, $width, $height);
 						$image->resizeImage($resized_dimensions['width'], $resized_dimensions['height'], imagick::FILTER_MITCHELL, 0.9, false);
 						// error_log("orignal image was valid " .var_export($resized_image, true));
-						$image->writeImage(dirname(__DIR__)."/images/downloaded/$resized_image.$ext");
+						$image->writeImage(dirname(__DIR__)."/images/downloaded/$resized_image." . $ext);
 					
 						// Upload image file to bucket
-						$CS3->add_image_file(dirname(__DIR__)."/images/downloaded/$resized_image.$ext", $bucket_name);
+						$CS3->add_image_file(dirname(__DIR__)."/images/downloaded/$resized_image." . $ext, $bucket_name);
 						
 						
 						// Save resized image name to database
@@ -124,7 +124,7 @@
 						// Destroy the image object
 						//$image->destroy();
 					
-						$resized_image = "$resized_image.$ext";
+						$resized_image = "$resized_image." . $ext;
 					} else {
 						$resized_image = null;
 					}
@@ -132,7 +132,7 @@
 					// Delete the resized image and the original image from the /images/downloaded folder
 					if(file_exists(dirname(__DIR__)."/images/downloaded/$resized_image"))
 						unlink(dirname(__DIR__)."/images/downloaded/$resized_image");
-						
+
 					if(file_exists(dirname(__DIR__)."/images/downloaded/$original_image"))
 						unlink(dirname(__DIR__)."/images/downloaded/$original_image");
 				}

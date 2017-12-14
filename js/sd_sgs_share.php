@@ -825,9 +825,10 @@ $(document).ready(function() {
 			
 			FB.login(function(response){
 				if (response.authResponse) {
-					
+					console.log("response in FB.login when selecting own wall: ", response);
 					sender_id = response.authResponse.userID;
 					$('#hdn_facebook_user_id').val(sender_id);
+					$("[name='hdn_access_token']").val(response.authResponse.accessToken)
 					
 					form_data 		= $('#frm-share-private-message').serialize();
 					helper_data 	= {'form_data': form_data, 'app_link': url_to_share, 'referral_code': '<?php print $referral_code?>'};
@@ -852,7 +853,7 @@ $(document).ready(function() {
 					alert("Please provide the requested permissions in order to share.");
 					trackButtonClick('share_permissions_rejected', '1', items_views_id);
 				}
-			});
+			},{scope: 'publish_actions'});
 
 			
 

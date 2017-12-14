@@ -37,6 +37,24 @@
 			}
 			return null;
 		}
+		
+		public function get_image_file($original_image, $bucket_name)
+		{
+			global $upload_bucket;
+			$src_file_path =  dirname(__DIR__) . "/" . $upload_bucket . '/' . $original_image;
+			$dest_file_path = dirname(__DIR__) . "/images/downloaded/" . $original_image;
+			error_log("CoupsmartS3::dest_file_path(): src_file_path: $src_file_path, dest_file_path: $dest_file_path");
+			$res = copy($src_file_path, $dest_file_path);
+			if($res)
+			{
+				return $dest_file_path;
+			}
+			else
+			{
+				error_log("could not copy file in CoupsmartS3::get_image_file()");
+			}
+			return null;
+		}
 	}
 
 ?>

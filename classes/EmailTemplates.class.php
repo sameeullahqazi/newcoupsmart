@@ -822,7 +822,7 @@ class EmailTemplates extends BasicDataObject
 			if(!empty($email_template_obj) && empty($val)){ //if an email template was provided and there no value
 				$new_val = $email_template_obj->getDefault($key);
 				if(empty($new_val)){
-					error_log("Passing in an empty value for an SGS email on line ".__LINE__);
+					// error_log("Passing in an empty value for an SGS email on line ".__LINE__);
 				}
 			}
 			$data[$key] = $new_val;
