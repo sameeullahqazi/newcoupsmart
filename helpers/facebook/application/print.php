@@ -657,10 +657,10 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 
 			$(document).ready(function() {
 				var is_web_deal = '<?php print $is_web_deal; ?>';
-				console.log("is_web_deal: " + is_web_deal + ", screenWidth: " + screenWidth + ", screenHeight: " + screenHeight);
+				// console.log("is_web_deal: " + is_web_deal + ", screenWidth: " + screenWidth + ", screenHeight: " + screenHeight);
 				if(is_web_deal == '1')
 				{
-					console.log('Setting new width of loading...');
+					// console.log('Setting new width of loading...');
 					$('#loading').css('width', screenWidth + 'px');
 				}
 				console.log($('#loading').css('width'));
@@ -670,8 +670,8 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 					 //url: "/cgi-bin/magickwand.cgi",
 					  dataType: 'json',
 					success: function(data) {
-						console.log('data returned when printing coupon:');
-						console.log(data);
+						// console.log('data returned when printing coupon:');
+						// console.log(data);
 						
 							  // alert('data: ' + data);
 						if(data != 0) {
@@ -763,7 +763,7 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 
 				function framePrint(whichFrame) {
 					var do_not_print = '<?php print $do_not_print?>';
-					console.log('do_not_print: ', do_not_print);
+					// console.log('do_not_print: ', do_not_print);
 					if(do_not_print == '1')
 						return false;
 					// parent[whichFrame].focus();
@@ -876,7 +876,7 @@ list($app_check_id, $app_check_secret, $facebook) = Common::CreateFacebookObject
 			<div id="loading" <?php print $is_web_deal ? " style='width:280px;height:170px;'" : "";?>>
 				<div class="loading_block">
 				<h1>Please wait, your voucher is loading...</h1>
-				<img src="//s3.amazonaws.com/siteimg.coupsmart.com/general/loading_gray.gif" alt="loading..." />
+				<img src="/images/loading_gray_transparent.gif" alt="loading..." />
 				</div>
 				<?php
 					// Lindt customization
